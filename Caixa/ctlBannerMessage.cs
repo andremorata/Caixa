@@ -28,7 +28,7 @@ namespace Caixa
             this.err.SetError(lbTitle, "ATENÇÃO");
         }
 
-        public new void Show(string title, string message)
+        public void Show(string title, string message)
         {
             this.lbTitle.Text = title;
             this.lbMessage.Text = message;

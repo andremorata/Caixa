@@ -18,7 +18,7 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("CaixaDBModel", "Movimento_TipoMovimento", "TipoMovimento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.TipoMovimento), "Movimentos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.Movimentos), true)]
+[assembly: EdmRelationshipAttribute("CaixaDBModel", "Movimento_TipoMovimento", "TipoMovimento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.TipoMovimento), "Movimentos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.Movimento), true)]
 
 #endregion
 
@@ -73,18 +73,18 @@ namespace Caixa
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Movimentos> Movimentos
+        public ObjectSet<Movimento> Movimentos
         {
             get
             {
                 if ((_Movimentos == null))
                 {
-                    _Movimentos = base.CreateObjectSet<Movimentos>("Movimentos");
+                    _Movimentos = base.CreateObjectSet<Movimento>("Movimentos");
                 }
                 return _Movimentos;
             }
         }
-        private ObjectSet<Movimentos> _Movimentos;
+        private ObjectSet<Movimento> _Movimentos;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -108,9 +108,9 @@ namespace Caixa
         /// <summary>
         /// Deprecated Method for adding a new object to the Movimentos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToMovimentos(Movimentos movimentos)
+        public void AddToMovimentos(Movimento movimento)
         {
-            base.AddObject("Movimentos", movimentos);
+            base.AddObject("Movimentos", movimento);
         }
     
         /// <summary>
@@ -132,30 +132,30 @@ namespace Caixa
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Movimentos")]
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Movimento")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Movimentos : EntityObject
+    public partial class Movimento : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Movimentos object.
+        /// Create a new Movimento object.
         /// </summary>
         /// <param name="descricao">Initial value of the Descricao property.</param>
         /// <param name="valor">Initial value of the Valor property.</param>
         /// <param name="data">Initial value of the Data property.</param>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="tipoMovimento">Initial value of the TipoMovimento property.</param>
-        public static Movimentos CreateMovimentos(global::System.String descricao, global::System.Double valor, global::System.DateTime data, global::System.Guid id, global::System.Guid tipoMovimento)
+        public static Movimento CreateMovimento(global::System.String descricao, global::System.Double valor, global::System.DateTime data, global::System.Guid id, global::System.Guid tipoMovimento)
         {
-            Movimentos movimentos = new Movimentos();
-            movimentos.Descricao = descricao;
-            movimentos.Valor = valor;
-            movimentos.Data = data;
-            movimentos.Id = id;
-            movimentos.TipoMovimento = tipoMovimento;
-            return movimentos;
+            Movimento movimento = new Movimento();
+            movimento.Descricao = descricao;
+            movimento.Valor = valor;
+            movimento.Data = data;
+            movimento.Id = id;
+            movimento.TipoMovimento = tipoMovimento;
+            return movimento;
         }
 
         #endregion
@@ -441,17 +441,17 @@ namespace Caixa
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Movimento_TipoMovimento", "Movimentos")]
-        public EntityCollection<Movimentos> Movimentos
+        public EntityCollection<Movimento> Movimentos
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Movimentos>("CaixaDBModel.Movimento_TipoMovimento", "Movimentos");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Movimento>("CaixaDBModel.Movimento_TipoMovimento", "Movimentos");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Movimentos>("CaixaDBModel.Movimento_TipoMovimento", "Movimentos", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Movimento>("CaixaDBModel.Movimento_TipoMovimento", "Movimentos", value);
                 }
             }
         }

@@ -51,14 +51,14 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CaixaDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="CaixaDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Movimentos" />
+          <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Movimento" />
           <EntitySet Name="TipoMovimento" EntityType="CaixaDBModel.TipoMovimento" />
           <AssociationSet Name="Movimento_TipoMovimento" Association="CaixaDBModel.Movimento_TipoMovimento">
             <End Role="TipoMovimento" EntitySet="TipoMovimento" />
             <End Role="Movimentos" EntitySet="Movimentos" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Movimentos">
+        <EntityType Name="Movimento">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -82,7 +82,7 @@
           <End Role="TipoMovimento" Type="CaixaDBModel.TipoMovimento" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Movimentos" Type="CaixaDBModel.Movimentos" Multiplicity="*" />
+          <End Role="Movimentos" Type="CaixaDBModel.Movimento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoMovimento">
               <PropertyRef Name="Id" />
@@ -98,7 +98,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CaixaDBModelStoreContainer" CdmEntityContainer="CaixaDBEntities">
-          <EntitySetMapping Name="Movimentos"><EntityTypeMapping TypeName="CaixaDBModel.Movimentos"><MappingFragment StoreEntitySet="Movimentos">
+          <EntitySetMapping Name="Movimentos"><EntityTypeMapping TypeName="CaixaDBModel.Movimento"><MappingFragment StoreEntitySet="Movimentos">
             <ScalarProperty Name="Descricao" ColumnName="Descricao" />
             <ScalarProperty Name="Valor" ColumnName="Valor" />
             <ScalarProperty Name="Data" ColumnName="Data" />
@@ -131,7 +131,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DB">
-        <EntityTypeShape EntityType="CaixaDBModel.Movimentos" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="CaixaDBModel.Movimento" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166665" IsExpanded="true" />
         <EntityTypeShape EntityType="CaixaDBModel.TipoMovimento" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937499996" IsExpanded="true" />
         <AssociationConnector Association="CaixaDBModel.Movimento_TipoMovimento" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="2.172841796875" />

@@ -12,12 +12,23 @@ namespace Caixa
     public partial class frmAlterar : Caixa.frmBase
     {
        
-        CaixaDBEntities entities = new CaixaDBEntities();
-        public frmAlterar()
+        CaixaDBEntities entities = Classes.Movimentos.DB;
+        
+        public Movimento Movimento { get; set; }
+
+        public frmAlterar(Movimento item)
         {
             InitializeComponent();
             message.Hide();
             BindTipos();
+            this.Movimento = item;
+
+            txtDescricao.Text = item.Descricao;
+            txtData.Value = item.Data;
+            txtValor.Value = Convert.ToDecimal(item.Valor);
+            txtObservacao.Text = item.Observacao;
+            cboTipo.SelectedValue = item.TipoMovimento;
+
         }
 
         private void BindTipos()
@@ -37,30 +48,6 @@ namespace Caixa
 
         }
                 
-        private void btIncluir_Click(object sender, EventArgs e)
-        {
-            if (ValidadeFields())
-            {
-                message.Hide();
-
-                Movimentos novo = new Movimentos();
-                novo.Id = Guid.NewGuid();
-                novo.Data = txtData.Value.Date;
-                novo.Descricao = txtDescricao.Text;
-                novo.Valor = Convert.ToDouble(txtValor.Value);
-                novo.TipoMovimento = ((Guid)cboTipo.SelectedValue);
-                novo.Observacao = txtObservacao.Text;
-
-                CaixaDBEntities db = new CaixaDBEntities();
-                db.Movimentos.AddObject(novo);
-                //db.AcceptAllChanges();
-                db.SaveChanges();
-
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
-            }
-        }
-
         private bool ValidadeFields()
         {
             bool skip = true;
@@ -81,6 +68,25 @@ namespace Caixa
         {            
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Close();
+        }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            if (ValidadeFields())
+            {
+                message.Hide();
+                Movimento mov = entities.Movimentos.FirstOrDefault(i => i.Id.Equals(Movimento.Id));
+                mov.Data = txtData.Value.Date;
+                mov.Descricao = txtDescricao.Text;
+                mov.Valor = Convert.ToDouble(txtValor.Value);
+                mov.TipoMovimento = ((Guid)cboTipo.SelectedValue);
+                mov.Observacao = txtObservacao.Text;
+
+                entities.SaveChanges();
+
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
+            }
         }
         
     }

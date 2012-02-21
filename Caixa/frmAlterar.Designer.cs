@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btCancelar = new System.Windows.Forms.Button();
-            this.btIncluir = new System.Windows.Forms.Button();
+            this.btAlterar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,23 +65,23 @@
             this.btCancelar.UseVisualStyleBackColor = false;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
-            // btIncluir
+            // btAlterar
             // 
-            this.btIncluir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btIncluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btIncluir.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btIncluir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btIncluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btIncluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btIncluir.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btIncluir.Location = new System.Drawing.Point(543, 514);
-            this.btIncluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(130, 42);
-            this.btIncluir.TabIndex = 23;
-            this.btIncluir.Text = "Concluir";
-            this.btIncluir.UseVisualStyleBackColor = false;
-            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
+            this.btAlterar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btAlterar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btAlterar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btAlterar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btAlterar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAlterar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAlterar.Location = new System.Drawing.Point(543, 514);
+            this.btAlterar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(130, 42);
+            this.btAlterar.TabIndex = 23;
+            this.btAlterar.Text = "Concluir";
+            this.btAlterar.UseVisualStyleBackColor = false;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // label1
             // 
@@ -239,7 +239,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtObservacao);
             this.Controls.Add(this.btCancelar);
-            this.Controls.Add(this.btIncluir);
+            this.Controls.Add(this.btAlterar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.label6);
@@ -260,7 +260,7 @@
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.cboTipo, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.btIncluir, 0);
+            this.Controls.SetChildIndex(this.btAlterar, 0);
             this.Controls.SetChildIndex(this.btCancelar, 0);
             this.Controls.SetChildIndex(this.txtObservacao, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -275,7 +275,7 @@
         #endregion
 
         private System.Windows.Forms.Button btCancelar;
-        private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.Button btAlterar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.Label label6;

@@ -52,12 +52,13 @@
             this.btRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btRestaurar.Image = global::Caixa.Properties.Resources.restore_white;
-            this.btRestaurar.Location = new System.Drawing.Point(1314, 9);
+            this.btRestaurar.Location = new System.Drawing.Point(1298, 9);
             this.btRestaurar.Name = "btRestaurar";
             this.btRestaurar.Size = new System.Drawing.Size(40, 40);
             this.btRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btRestaurar.TabIndex = 7;
             this.btRestaurar.TabStop = false;
+            this.btRestaurar.Visible = false;
             this.btRestaurar.Click += new System.EventHandler(this.btRestaurar_Click);
             // 
             // btFechar
@@ -77,12 +78,13 @@
             this.btMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMinimizar.Image = global::Caixa.Properties.Resources.minimize_white;
-            this.btMinimizar.Location = new System.Drawing.Point(1268, 9);
+            this.btMinimizar.Location = new System.Drawing.Point(1252, 9);
             this.btMinimizar.Name = "btMinimizar";
             this.btMinimizar.Size = new System.Drawing.Size(40, 40);
             this.btMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btMinimizar.TabIndex = 8;
             this.btMinimizar.TabStop = false;
+            this.btMinimizar.Visible = false;
             this.btMinimizar.Click += new System.EventHandler(this.btMinimizar_Click);
             // 
             // frmBase
@@ -90,14 +92,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.ClientSize = new System.Drawing.Size(1350, 682);
             this.Controls.Add(this.btMinimizar);
             this.Controls.Add(this.btRestaurar);
             this.Controls.Add(this.btFechar);
             this.Controls.Add(this.lbTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmBase";

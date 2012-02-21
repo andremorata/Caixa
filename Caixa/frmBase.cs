@@ -51,22 +51,33 @@ namespace Caixa
         {
             switch (e.KeyCode)
             {
-                case Keys.Escape:                    
-                    btFechar_Click(sender, e);
+                case Keys.Escape:
+                    if (Application.OpenForms.Count == 1)
+                    {
+                        if (MessageBox.Show("Atenção", "Deseja realmente encerrar o sistema?", MessageBox.MessageBoxButtons.YesNo, 
+                            MessageBox.MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                            btFechar_Click(sender, e);
+                    }
+                    else
+                    {
+                        btFechar_Click(sender, e);
+                    }
                     break;
             }
         }
 
         private void frmBase_SizeChanged(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                btMinimizar.Visible = true;
-                btRestaurar.Visible = true;                
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;                
-                Application.DoEvents();
-                this.WindowState = FormWindowState.Maximized;
-            }
+            if (Properties.Settings.Default.DebugMode)
+                this.Text = this.Width.ToString() + " x " + this.Height.ToString();
+            //if (this.WindowState == FormWindowState.Maximized)
+            //{
+            //    btMinimizar.Visible = true;
+            //    btRestaurar.Visible = true;                
+            //    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;                
+            //    Application.DoEvents();
+            //    this.WindowState = FormWindowState.Maximized;
+            //}
         }
         
     }
