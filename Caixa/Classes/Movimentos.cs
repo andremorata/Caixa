@@ -22,8 +22,22 @@ namespace Caixa.Classes
                                   Valor = i.Valor,
                                   Tipo = i.Tipo.Descricao
                               });
-            double sum = movimentos.Sum(i => i.Valor);            
-            Total = sum;
+            if (movimentos.Count() > 0)
+            {
+                double sumEntradas = 0, sumSaidas = 0;
+
+                if (movimentos.Where(i => i.Tipo == "Entrada").Count()>0)
+                    sumEntradas = movimentos.Where(i => i.Tipo == "Entrada").Sum(i => i.Valor);
+
+                if (movimentos.Where(i => i.Tipo == "Saída").Count() > 0)
+                    sumSaidas = movimentos.Where(i => i.Tipo == "Saída").Sum(i => i.Valor);
+
+                Total = sumEntradas - sumSaidas;
+            }
+            else
+            {
+                Total = 0;
+            }
             return movimentos;
         }
 

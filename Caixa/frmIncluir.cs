@@ -20,6 +20,34 @@ namespace Caixa
             BindTipos();
         }
 
+        public frmIncluir(bool InclusaoRapida)
+        {
+            InitializeComponent();
+
+            message.Hide();
+            BindTipos();
+
+            if (InclusaoRapida)
+            {
+                txtDescricao.Text = "Venda - " + DateTime.Now.ToShortTimeString();
+                txtData.Value = DateTime.Today;
+                txtObservacao.Text = "";
+                foreach (TipoMovimento item in cboTipo.Items)
+                    if (item.Descricao == "Entrada")
+                        cboTipo.SelectedValue = item.Id;
+                
+                this.message.Show("DICA:", "Este modo de inclusão se aplica à vendas rápidas e por isso alguns campos foram desativados.", ctlBannerMessage.TipoMensagem.Dica);
+
+                txtDescricao.Enabled = false;
+                txtData.Enabled = false;
+                txtObservacao.Enabled = false;
+                cboTipo.Enabled = false;
+
+                Application.DoEvents();
+                txtValor.Focus();
+            }
+        }
+
         private void BindTipos()
         {
             List<TipoMovimento> tipos = (from i in entities.TipoMovimento
@@ -84,7 +112,7 @@ namespace Caixa
             }
 
             if (!skip)
-                this.message.Show("Atenção", "Alguns campos são obrigatórios. Veja as sinalizações abaixo.");
+                this.message.Show("Atenção", "Alguns campos são obrigatórios. Veja as sinalizações abaixo.", ctlBannerMessage.TipoMensagem.Alerta);
 
             return skip;
         }
@@ -93,6 +121,21 @@ namespace Caixa
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Close();
+        }
+
+        private void txtDescricao_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox)
+                ((TextBox)sender).SelectAll();
+
+            if (sender is NumericUpDown)
+                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Value.ToString("f").Length);
+        }
+
+        private void txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.SelectNextControl((Control)sender, true, true, false, true);
         }
 
     }

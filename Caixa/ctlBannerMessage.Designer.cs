@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btFechar = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.lbMessage = new System.Windows.Forms.Label();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btFechar = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(253)))), ((int)(((byte)(198)))));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btFechar);
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Controls.Add(this.lbMessage);
@@ -49,35 +49,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(511, 223);
             this.panel1.TabIndex = 28;
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.ForeColor = System.Drawing.Color.Firebrick;
-            this.lbTitle.Location = new System.Drawing.Point(-1, -2);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(126, 32);
-            this.lbTitle.TabIndex = 15;
-            this.lbTitle.Text = "Descrição";
-            // 
-            // lbMessage
-            // 
-            this.lbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbMessage.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.lbMessage.ForeColor = System.Drawing.Color.Firebrick;
-            this.lbMessage.Location = new System.Drawing.Point(13, 28);
-            this.lbMessage.Name = "lbMessage";
-            this.lbMessage.Size = new System.Drawing.Size(491, 188);
-            this.lbMessage.TabIndex = 16;
-            this.lbMessage.Text = "Texto";
-            // 
-            // err
-            // 
-            this.err.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.err.ContainerControl = this;
             // 
             // btFechar
             // 
@@ -93,10 +64,40 @@
             this.btFechar.Text = "x";
             this.btFechar.Click += new System.EventHandler(this.btFechar_Click);
             // 
+            // lbTitle
+            // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lbTitle.Location = new System.Drawing.Point(-1, -2);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(126, 32);
+            this.lbTitle.TabIndex = 15;
+            this.lbTitle.Text = "Descrição";
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbMessage.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lbMessage.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lbMessage.Location = new System.Drawing.Point(13, 28);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(491, 188);
+            this.lbMessage.TabIndex = 16;
+            this.lbMessage.Text = "Texto";
+            // 
+            // err
+            // 
+            this.err.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.err.ContainerControl = this;
+            // 
             // ctlBannerMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Name = "ctlBannerMessage";
             this.Size = new System.Drawing.Size(511, 223);

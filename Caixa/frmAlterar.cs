@@ -59,7 +59,7 @@ namespace Caixa
                 err.SetError(cboTipo, "O campo Tipo precisa ser preenchido."); skip = false; }
 
             if (!skip)
-                this.message.Show("Atenção", "Alguns campos são obrigatórios. Veja as sinalizações abaixo.");            
+                this.message.Show("Atenção", "Alguns campos são obrigatórios. Veja as sinalizações abaixo.", ctlBannerMessage.TipoMensagem.Alerta);            
             
             return skip;
         }
@@ -87,6 +87,21 @@ namespace Caixa
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void txtDescricao_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox)
+                ((TextBox)sender).SelectAll();
+
+            if (sender is NumericUpDown)
+                ((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Value.ToString("f").Length);
+        }
+
+        private void txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.SelectNextControl((Control)sender, true, true, false, true);
         }
         
     }

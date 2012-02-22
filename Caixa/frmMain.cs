@@ -37,6 +37,8 @@ namespace Caixa
 
             if (datas.Count > 0)
                 lstData.SelectedIndex = 0;
+            else
+                GetData(DateTime.Today);
         }
 
         private void GetData(DateTime Data)
@@ -75,6 +77,9 @@ namespace Caixa
                     break;
                 case Keys.F2:
                     btAlterar.PerformClick();
+                    break;
+                case Keys.F5:
+                    btInclusaoRapida.PerformClick();
                     break;
                 case Keys.Delete:
                     btExcluir.PerformClick();
@@ -169,6 +174,20 @@ namespace Caixa
                     item.Cells["Tipo"].Style.BackColor = Color.DarkRed;
                     item.Cells["Tipo"].Style.SelectionBackColor = Color.DarkRed;
                 }
+            }
+        }
+
+        private void btBusca_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidade ainda em desenvolvimento.");
+        }
+
+        private void btInclusaoRapida_Click(object sender, EventArgs e)
+        {
+            frmIncluir incluir = new frmIncluir(true);
+            if (incluir.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FillDatas(); lstData.SelectedIndex = 0;
             }
         }
 

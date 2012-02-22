@@ -16,6 +16,42 @@ namespace Caixa
             InitializeComponent();
         }
 
+        public enum TipoMensagem
+        {
+            Alerta = 1,
+            Dica
+        }
+
+        TipoMensagem tipoDaMensagem;
+        [DefaultValue(typeof(TipoMensagem), "Alerta")]
+        public TipoMensagem TipoDaMensagem 
+        {
+            get
+            {
+                return this.tipoDaMensagem;
+            }
+            set
+            {
+                this.tipoDaMensagem = value;
+                if (value == TipoMensagem.Alerta)
+                {
+                    lbTitle.ForeColor = Color.DarkRed;
+                    lbMessage.ForeColor = Color.DarkRed;
+                    this.BackColor = Color.FromArgb(249, 253, 198);
+                    lbTitle.Location = new Point(-1, -2);
+                    lbMessage.Location = new Point(13, 28);                    
+                }
+                else
+                {
+                    lbTitle.ForeColor = Color.DodgerBlue;
+                    lbMessage.ForeColor = Color.DodgerBlue;
+                    this.BackColor = Color.White;
+                    lbTitle.Location = new Point(-1, -2);
+                    lbMessage.Location = new Point(13, 22);                    
+                }
+            } 
+        }
+
         private void btFechar_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -24,12 +60,16 @@ namespace Caixa
         public new void Show()
         {
             this.Visible = true;
-            this.err.SetIconAlignment(lbTitle, ErrorIconAlignment.MiddleRight);
-            this.err.SetError(lbTitle, "ATENÇÃO");
+            if (TipoDaMensagem == TipoMensagem.Alerta)
+            {
+                this.err.SetIconAlignment(lbTitle, ErrorIconAlignment.MiddleRight);
+                this.err.SetError(lbTitle, "ATENÇÃO");
+            }
         }
 
-        public void Show(string title, string message)
+        public void Show(string title, string message, TipoMensagem tipo)
         {
+            this.TipoDaMensagem = tipo;
             this.lbTitle.Text = title;
             this.lbMessage.Text = message;
             this.Show();            

@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Movimentos.cs" />
+    <Compile Include="Controls\CaixaButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CaixaButton.Designer.cs">
+      <DependentUpon>CaixaButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAlterar.cs">
       <SubType>Form</SubType>
     </Compile>
