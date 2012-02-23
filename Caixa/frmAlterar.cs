@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Caixa.DB;
+using Caixa.Classes;
 
 namespace Caixa
 {
     public partial class frmAlterar : Caixa.frmBase
     {
        
-        CaixaDBEntities entities = Classes.Movimentos.DB;
+        CaixaDBEntities entities = Movimentos.DB;
         
         public Movimento Movimento { get; set; }
 

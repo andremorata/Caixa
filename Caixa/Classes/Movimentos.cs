@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using Caixa.DB;
+using Caixa.Classes;
 
 namespace Caixa.Classes
 {

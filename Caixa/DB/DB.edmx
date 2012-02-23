@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CaixaDBModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CaixaDBModelStoreContainer">
+          <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Store.Movimentos" store:Type="Tables" />
+          <EntitySet Name="TipoMovimento" EntityType="CaixaDBModel.Store.TipoMovimento" store:Type="Tables" />
+          <AssociationSet Name="Movimento_TipoMovimento" Association="CaixaDBModel.Store.Movimento_TipoMovimento">
+            <End Role="TipoMovimento" EntitySet="TipoMovimento" />
+            <End Role="Movimentos" EntitySet="Movimentos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Movimentos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Valor" Type="float" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Observacao" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TipoMovimento" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="Movimento_TipoMovimento">
+          <End Role="TipoMovimento" Type="CaixaDBModel.Store.TipoMovimento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimentos" Type="CaixaDBModel.Store.Movimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimentos">
+              <PropertyRef Name="TipoMovimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CaixaDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CaixaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Movimento" />
+          <EntitySet Name="TipoMovimento" EntityType="CaixaDBModel.TipoMovimento" />
+          <AssociationSet Name="Movimento_TipoMovimento" Association="CaixaDBModel.Movimento_TipoMovimento">
+            <End Role="TipoMovimento" EntitySet="TipoMovimento" />
+            <End Role="Movimentos" EntitySet="Movimentos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Movimento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Valor" Type="Double" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
+          <Property Name="Observacao" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TipoMovimento" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Tipo" Relationship="CaixaDBModel.Movimento_TipoMovimento" FromRole="Movimentos" ToRole="TipoMovimento" />
+        </EntityType>
+        <EntityType Name="TipoMovimento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Movimentos" Relationship="CaixaDBModel.Movimento_TipoMovimento" FromRole="TipoMovimento" ToRole="Movimentos" />
+        </EntityType>
+        <Association Name="Movimento_TipoMovimento">
+          <End Role="TipoMovimento" Type="CaixaDBModel.TipoMovimento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimentos" Type="CaixaDBModel.Movimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimentos">
+              <PropertyRef Name="TipoMovimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CaixaDBModelStoreContainer" CdmEntityContainer="CaixaDBEntities">
+          <EntitySetMapping Name="Movimentos"><EntityTypeMapping TypeName="CaixaDBModel.Movimento"><MappingFragment StoreEntitySet="Movimentos">
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+            <ScalarProperty Name="Valor" ColumnName="Valor" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+            <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="TipoMovimento" ColumnName="TipoMovimento" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimento"><EntityTypeMapping TypeName="CaixaDBModel.TipoMovimento"><MappingFragment StoreEntitySet="TipoMovimento">
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DB">
+        <EntityTypeShape EntityType="CaixaDBModel.Movimento" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="CaixaDBModel.TipoMovimento" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="CaixaDBModel.Movimento_TipoMovimento" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.172841796875" />
+          <ConnectorPoint PointX="3" PointY="2.172841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Caixa.DB;
+using Caixa.Classes;
 
 namespace Caixa
 {

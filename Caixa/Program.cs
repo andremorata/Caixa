@@ -16,7 +16,7 @@ namespace Caixa
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Classes.Movimentos.DB = new CaixaDBEntities();
+            Classes.Movimentos.DB = new DB.CaixaDBEntities();
             
             Application.Run(new frmMain());            
         }

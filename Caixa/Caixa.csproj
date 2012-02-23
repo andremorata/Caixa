@@ -62,7 +62,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Tag2.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Tag2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -95,13 +95,13 @@
     <Compile Include="frmAlterar.Designer.cs">
       <DependentUpon>frmAlterar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlBannerMessage.cs">
+    <Compile Include="UserControls\ctlBannerMessage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlBannerMessage.Designer.cs">
+    <Compile Include="UserControls\ctlBannerMessage.Designer.cs">
       <DependentUpon>ctlBannerMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="DB.Designer.cs">
+    <Compile Include="DB\DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
@@ -124,10 +124,10 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageBox.cs">
+    <Compile Include="Util\MessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MessageBox.Designer.cs">
+    <Compile Include="Util\MessageBox.Designer.cs">
       <DependentUpon>MessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -135,7 +135,7 @@
     <EmbeddedResource Include="frmAlterar.resx">
       <DependentUpon>frmAlterar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlBannerMessage.resx">
+    <EmbeddedResource Include="UserControls\ctlBannerMessage.resx">
       <DependentUpon>ctlBannerMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBase.resx">
@@ -147,7 +147,7 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageBox.resx">
+    <EmbeddedResource Include="Util\MessageBox.resx">
       <DependentUpon>MessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -161,11 +161,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.Config" />
-    <EntityDeploy Include="DB.edmx">
+    <EntityDeploy Include="DB\DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Caixa_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\CaixaDBEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,10 +177,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CaixaDB.sdf">
+    <Content Include="DB\CaixaDB.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tag2.ico" />
+    <Content Include="Resources\Tag2.ico" />
     <None Include="Resources\restore_white.png" />
     <None Include="Resources\minimize_white.png" />
     <None Include="Resources\close_white.png" />
