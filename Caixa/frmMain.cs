@@ -27,9 +27,8 @@ namespace Caixa
 
         private void FillDatas()
         {
-            List<DateTime> datas = (from i in entities.Movimentos
-                                    orderby i.Data descending
-                                    select i.Data).Distinct().ToList<DateTime>();
+            List<DateTime> datas = (from i in entities.Movimentos                      
+                      select i.Data).Distinct().OrderByDescending( i => i).ToList<DateTime>();
 
             lstData.ValueMember = "Data";
             lstData.DisplayMember = "Data";
