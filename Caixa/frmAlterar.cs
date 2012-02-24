@@ -14,7 +14,7 @@ namespace Caixa
     public partial class frmAlterar : Caixa.frmBase
     {
        
-        CaixaDBEntities entities = Movimentos.DB;
+        CaixaDBEntities entities = DBInstance.DB;
         
         public Movimento Movimento { get; set; }
 

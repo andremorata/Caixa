@@ -10,11 +10,9 @@ namespace Caixa.Classes
 {
     public static class Movimentos
     {
-        public static CaixaDBEntities DB { get; set; }
-
         public static IQueryable GetData(DateTime DataInicio, DateTime DataFim, out double Total)
         {            
-            var movimentos = (from i in DB.Movimentos
+            var movimentos = (from i in DBInstance.DB.Movimentos
                               where i.Data >= DataInicio && i.Data <= DataFim
                               select new
                               {

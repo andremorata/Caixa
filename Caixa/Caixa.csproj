@@ -82,7 +82,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DBInstance.cs" />
+    <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\Movimentos.cs" />
+    <Compile Include="Classes\Sistema.cs" />
     <Compile Include="Controls\CaixaButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -94,6 +97,12 @@
     </Compile>
     <Compile Include="frmAlterar.Designer.cs">
       <DependentUpon>frmAlterar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ctlBannerMessage.cs">
       <SubType>UserControl</SubType>
@@ -134,6 +143,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAlterar.resx">
       <DependentUpon>frmAlterar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ctlBannerMessage.resx">
       <DependentUpon>ctlBannerMessage.cs</DependentUpon>

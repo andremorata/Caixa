@@ -19,6 +19,9 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("CaixaDBModel", "Movimento_TipoMovimento", "TipoMovimento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.TipoMovimento), "Movimentos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Movimento), true)]
+[assembly: EdmRelationshipAttribute("CaixaDBModel", "Permissoes_Feature", "Features", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.Features), "Permissoes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Permissoes), true)]
+[assembly: EdmRelationshipAttribute("CaixaDBModel", "Permissao_Grupo", "GruposUsuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.GruposUsuarios), "Permissoes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Permissoes), true)]
+[assembly: EdmRelationshipAttribute("CaixaDBModel", "GrupoLogin", "GruposUsuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.GruposUsuarios), "Login", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Login))]
 
 #endregion
 
@@ -101,6 +104,70 @@ namespace Caixa.DB
             }
         }
         private ObjectSet<TipoMovimento> _TipoMovimento;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Features> Features
+        {
+            get
+            {
+                if ((_Features == null))
+                {
+                    _Features = base.CreateObjectSet<Features>("Features");
+                }
+                return _Features;
+            }
+        }
+        private ObjectSet<Features> _Features;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GruposUsuarios> GruposUsuarios
+        {
+            get
+            {
+                if ((_GruposUsuarios == null))
+                {
+                    _GruposUsuarios = base.CreateObjectSet<GruposUsuarios>("GruposUsuarios");
+                }
+                return _GruposUsuarios;
+            }
+        }
+        private ObjectSet<GruposUsuarios> _GruposUsuarios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Login> Login
+        {
+            get
+            {
+                if ((_Login == null))
+                {
+                    _Login = base.CreateObjectSet<Login>("Login");
+                }
+                return _Login;
+            }
+        }
+        private ObjectSet<Login> _Login;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Permissoes> Permissoes
+        {
+            get
+            {
+                if ((_Permissoes == null))
+                {
+                    _Permissoes = base.CreateObjectSet<Permissoes>("Permissoes");
+                }
+                return _Permissoes;
+            }
+        }
+        private ObjectSet<Permissoes> _Permissoes;
 
         #endregion
         #region AddTo Methods
@@ -120,6 +187,38 @@ namespace Caixa.DB
         {
             base.AddObject("TipoMovimento", tipoMovimento);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Features EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFeatures(Features features)
+        {
+            base.AddObject("Features", features);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GruposUsuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGruposUsuarios(GruposUsuarios gruposUsuarios)
+        {
+            base.AddObject("GruposUsuarios", gruposUsuarios);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Login EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLogin(Login login)
+        {
+            base.AddObject("Login", login);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Permissoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPermissoes(Permissoes permissoes)
+        {
+            base.AddObject("Permissoes", permissoes);
+        }
 
         #endregion
     }
@@ -128,6 +227,424 @@ namespace Caixa.DB
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Features")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Features : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Features object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="descricao">Initial value of the Descricao property.</param>
+        public static Features CreateFeatures(global::System.Guid id, global::System.String descricao)
+        {
+            Features features = new Features();
+            features.Id = id;
+            features.Descricao = descricao;
+            return features;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Descricao
+        {
+            get
+            {
+                return _Descricao;
+            }
+            set
+            {
+                OnDescricaoChanging(value);
+                ReportPropertyChanging("Descricao");
+                _Descricao = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Descricao");
+                OnDescricaoChanged();
+            }
+        }
+        private global::System.String _Descricao;
+        partial void OnDescricaoChanging(global::System.String value);
+        partial void OnDescricaoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Permissoes_Feature", "Permissoes")]
+        public EntityCollection<Permissoes> Permissoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Permissoes>("CaixaDBModel.Permissoes_Feature", "Permissoes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Permissoes>("CaixaDBModel.Permissoes_Feature", "Permissoes", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="GruposUsuarios")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GruposUsuarios : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new GruposUsuarios object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="nome">Initial value of the Nome property.</param>
+        /// <param name="ativo">Initial value of the Ativo property.</param>
+        public static GruposUsuarios CreateGruposUsuarios(global::System.Guid id, global::System.String nome, global::System.Boolean ativo)
+        {
+            GruposUsuarios gruposUsuarios = new GruposUsuarios();
+            gruposUsuarios.Id = id;
+            gruposUsuarios.Nome = nome;
+            gruposUsuarios.Ativo = ativo;
+            return gruposUsuarios;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nome
+        {
+            get
+            {
+                return _Nome;
+            }
+            set
+            {
+                OnNomeChanging(value);
+                ReportPropertyChanging("Nome");
+                _Nome = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Nome");
+                OnNomeChanged();
+            }
+        }
+        private global::System.String _Nome;
+        partial void OnNomeChanging(global::System.String value);
+        partial void OnNomeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Ativo
+        {
+            get
+            {
+                return _Ativo;
+            }
+            set
+            {
+                OnAtivoChanging(value);
+                ReportPropertyChanging("Ativo");
+                _Ativo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Ativo");
+                OnAtivoChanged();
+            }
+        }
+        private global::System.Boolean _Ativo;
+        partial void OnAtivoChanging(global::System.Boolean value);
+        partial void OnAtivoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Permissao_Grupo", "Permissoes")]
+        public EntityCollection<Permissoes> Permissoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Permissoes>("CaixaDBModel.Permissao_Grupo", "Permissoes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Permissoes>("CaixaDBModel.Permissao_Grupo", "Permissoes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "GrupoLogin", "Login")]
+        public EntityCollection<Login> Login
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Login>("CaixaDBModel.GrupoLogin", "Login");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Login>("CaixaDBModel.GrupoLogin", "Login", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Login")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Login : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Login object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="username">Initial value of the Username property.</param>
+        /// <param name="password">Initial value of the Password property.</param>
+        /// <param name="ativo">Initial value of the Ativo property.</param>
+        public static Login CreateLogin(global::System.Guid id, global::System.String username, global::System.String password, global::System.Boolean ativo)
+        {
+            Login login = new Login();
+            login.Id = id;
+            login.Username = username;
+            login.Password = password;
+            login.Ativo = ativo;
+            return login;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Username
+        {
+            get
+            {
+                return _Username;
+            }
+            set
+            {
+                OnUsernameChanging(value);
+                ReportPropertyChanging("Username");
+                _Username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Username");
+                OnUsernameChanged();
+            }
+        }
+        private global::System.String _Username;
+        partial void OnUsernameChanging(global::System.String value);
+        partial void OnUsernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Ativo
+        {
+            get
+            {
+                return _Ativo;
+            }
+            set
+            {
+                OnAtivoChanging(value);
+                ReportPropertyChanging("Ativo");
+                _Ativo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Ativo");
+                OnAtivoChanged();
+            }
+        }
+        private global::System.Boolean _Ativo;
+        partial void OnAtivoChanging(global::System.Boolean value);
+        partial void OnAtivoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "GrupoLogin", "GruposUsuarios")]
+        public EntityCollection<GruposUsuarios> GruposUsuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GruposUsuarios>("CaixaDBModel.GrupoLogin", "GruposUsuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GruposUsuarios>("CaixaDBModel.GrupoLogin", "GruposUsuarios", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -346,6 +863,218 @@ namespace Caixa.DB
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TipoMovimento>("CaixaDBModel.Movimento_TipoMovimento", "TipoMovimento", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Permissoes")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Permissoes : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Permissoes object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="id_Feature">Initial value of the Id_Feature property.</param>
+        /// <param name="id_Grupo">Initial value of the Id_Grupo property.</param>
+        /// <param name="ativo">Initial value of the Ativo property.</param>
+        public static Permissoes CreatePermissoes(global::System.Guid id, global::System.Guid id_Feature, global::System.Guid id_Grupo, global::System.Boolean ativo)
+        {
+            Permissoes permissoes = new Permissoes();
+            permissoes.ID = id;
+            permissoes.Id_Feature = id_Feature;
+            permissoes.Id_Grupo = id_Grupo;
+            permissoes.Ativo = ativo;
+            return permissoes;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id_Feature
+        {
+            get
+            {
+                return _Id_Feature;
+            }
+            set
+            {
+                OnId_FeatureChanging(value);
+                ReportPropertyChanging("Id_Feature");
+                _Id_Feature = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id_Feature");
+                OnId_FeatureChanged();
+            }
+        }
+        private global::System.Guid _Id_Feature;
+        partial void OnId_FeatureChanging(global::System.Guid value);
+        partial void OnId_FeatureChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id_Grupo
+        {
+            get
+            {
+                return _Id_Grupo;
+            }
+            set
+            {
+                OnId_GrupoChanging(value);
+                ReportPropertyChanging("Id_Grupo");
+                _Id_Grupo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id_Grupo");
+                OnId_GrupoChanged();
+            }
+        }
+        private global::System.Guid _Id_Grupo;
+        partial void OnId_GrupoChanging(global::System.Guid value);
+        partial void OnId_GrupoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Ativo
+        {
+            get
+            {
+                return _Ativo;
+            }
+            set
+            {
+                OnAtivoChanging(value);
+                ReportPropertyChanging("Ativo");
+                _Ativo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Ativo");
+                OnAtivoChanged();
+            }
+        }
+        private global::System.Boolean _Ativo;
+        partial void OnAtivoChanging(global::System.Boolean value);
+        partial void OnAtivoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Permissoes_Feature", "Features")]
+        public Features Features
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Features>("CaixaDBModel.Permissoes_Feature", "Features").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Features>("CaixaDBModel.Permissoes_Feature", "Features").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Features> FeaturesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Features>("CaixaDBModel.Permissoes_Feature", "Features");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Features>("CaixaDBModel.Permissoes_Feature", "Features", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Permissao_Grupo", "GruposUsuarios")]
+        public GruposUsuarios GruposUsuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GruposUsuarios>("CaixaDBModel.Permissao_Grupo", "GruposUsuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GruposUsuarios>("CaixaDBModel.Permissao_Grupo", "GruposUsuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GruposUsuarios> GruposUsuariosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GruposUsuarios>("CaixaDBModel.Permissao_Grupo", "GruposUsuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GruposUsuarios>("CaixaDBModel.Permissao_Grupo", "GruposUsuarios", value);
                 }
             }
         }

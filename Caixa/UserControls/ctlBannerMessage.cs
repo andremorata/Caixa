@@ -14,6 +14,7 @@ namespace Caixa
         public ctlBannerMessage()
         {
             InitializeComponent();
+            this.tipoDaMensagem = TipoMensagem.Alerta;
         }
 
         public enum TipoMensagem
