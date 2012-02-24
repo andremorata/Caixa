@@ -92,16 +92,22 @@
     <Compile Include="Controls\CaixaButton.Designer.cs">
       <DependentUpon>CaixaButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInclusaoRapida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInclusaoRapida.Designer.cs">
+      <DependentUpon>frmInclusaoRapida.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAlterar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAlterar.Designer.cs">
       <DependentUpon>frmAlterar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Security\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Security\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ctlBannerMessage.cs">
@@ -141,10 +147,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmInclusaoRapida.resx">
+      <DependentUpon>frmInclusaoRapida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAlterar.resx">
       <DependentUpon>frmAlterar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Security\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ctlBannerMessage.resx">

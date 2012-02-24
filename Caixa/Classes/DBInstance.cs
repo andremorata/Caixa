@@ -9,5 +9,10 @@ namespace Caixa.Classes
     static class DBInstance
     {
         public static CaixaDBEntities DB { get; set; }
+
+        public static CaixaDBEntities NewInstance()
+        {
+            return new CaixaDBEntities();
+        }
     }
 }

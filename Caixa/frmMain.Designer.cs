@@ -340,6 +340,7 @@
             this.Controls.Add(this.lstData);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.shapeContainer1);
+            this.Feature = "Caixa_Admin";
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);

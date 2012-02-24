@@ -10,7 +10,9 @@ using System.Windows.Forms;
 namespace Caixa
 {
     public partial class frmBase : Form
-    {   
+    {
+
+        public string Feature { get; set; }
 
         public frmBase()
         {

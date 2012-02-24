@@ -13,8 +13,6 @@ namespace Caixa
 {
     public partial class frmIncluir : Caixa.frmBase
     {
-
-        CaixaDBEntities entities = new CaixaDBEntities();
         public frmIncluir()
         {
             InitializeComponent();
@@ -52,7 +50,7 @@ namespace Caixa
 
         private void BindTipos()
         {
-            List<TipoMovimento> tipos = (from i in entities.TipoMovimento
+            List<TipoMovimento> tipos = (from i in DBInstance.DB.TipoMovimento
                                          select i).ToList<TipoMovimento>();
 
             TipoMovimento selecione = new TipoMovimento();
