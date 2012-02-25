@@ -189,25 +189,7 @@ namespace Caixa
             {
                 FillDatas(); lstData.SelectedIndex = 0;
             }
-        }
-
-        bool ConfirmaSair = false;
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!ConfirmaSair)
-            {
-                if (MessageBox.Show("Atenção", "Deseja realmente sair? \r\n\r\n Você será levado à tela de Login.", MessageBox.MessageBoxButtons.YesNo,
-                                MessageBox.MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    ConfirmaSair = true;
-                    this.Close();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
+        }        
 
     }
 }

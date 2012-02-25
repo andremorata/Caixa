@@ -60,9 +60,30 @@ namespace Caixa.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Add48 {
+            get {
+                object obj = ResourceManager.GetObject("Add48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap close_white {
             get {
                 object obj = ResourceManager.GetObject("close_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap File_info48 {
+            get {
+                object obj = ResourceManager.GetObject("File_info48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Lock48 {
+            get {
+                object obj = ResourceManager.GetObject("Lock48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -74,9 +95,23 @@ namespace Caixa.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Paperclip24 {
+            get {
+                object obj = ResourceManager.GetObject("Paperclip24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap restore_white {
             get {
                 object obj = ResourceManager.GetObject("restore_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap User48 {
+            get {
+                object obj = ResourceManager.GetObject("User48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

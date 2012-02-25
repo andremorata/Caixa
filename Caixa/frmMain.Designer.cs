@@ -342,8 +342,7 @@
             this.Controls.Add(this.shapeContainer1);
             this.Feature = "Caixa_Admin";
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "frmMain";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Name = "frmMain";            
             this.SizeChanged += new System.EventHandler(this.frmMain_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.Controls.SetChildIndex(this.shapeContainer1, 0);

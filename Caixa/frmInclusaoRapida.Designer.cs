@@ -38,6 +38,8 @@
             this.message = new Caixa.ctlBannerMessage();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.lstValores = new System.Windows.Forms.ListBox();
+            this.lbTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtValor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +124,7 @@
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservacao.Size = new System.Drawing.Size(527, 168);
+            this.txtObservacao.Size = new System.Drawing.Size(446, 168);
             this.txtObservacao.TabIndex = 9;
             this.txtObservacao.Enter += new System.EventHandler(this.txtDescricao_Enter);
             this.txtObservacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -168,10 +170,53 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "(opcional)";
             // 
+            // lstValores
+            // 
+            this.lstValores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstValores.BackColor = System.Drawing.Color.Black;
+            this.lstValores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstValores.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstValores.ForeColor = System.Drawing.Color.White;
+            this.lstValores.FormatString = "N2";
+            this.lstValores.FormattingEnabled = true;
+            this.lstValores.IntegralHeight = false;
+            this.lstValores.ItemHeight = 50;
+            this.lstValores.Items.AddRange(new object[] {
+            "0,20",
+            "0,25",
+            "0,60",
+            "1,30",
+            "3,40",
+            "10,25",
+            "23,20",
+            "65,70"});
+            this.lstValores.Location = new System.Drawing.Point(1202, 210);
+            this.lstValores.Name = "lstValores";
+            this.lstValores.Size = new System.Drawing.Size(128, 401);
+            this.lstValores.TabIndex = 14;
+            this.lstValores.TabStop = false;
+            this.lstValores.UseTabStops = false;
+            this.lstValores.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstValores_MouseClick);
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTotal.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.Location = new System.Drawing.Point(1018, 603);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(310, 71);
+            this.lbTotal.TabIndex = 15;
+            this.lbTotal.Text = "R$ 0,00";
+            this.lbTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbTotal.Visible = false;
+            // 
             // frmInclusaoRapida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.ClientSize = new System.Drawing.Size(1344, 682);
+            this.Controls.Add(this.lstValores);
+            this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.message);
@@ -193,6 +238,8 @@
             this.Controls.SetChildIndex(this.message, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lbTotal, 0);
+            this.Controls.SetChildIndex(this.lstValores, 0);
             ((System.ComponentModel.ISupportInitialize)(this.txtValor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
@@ -211,5 +258,7 @@
         private ctlBannerMessage message;
         private System.Windows.Forms.ErrorProvider err;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lstValores;
+        private System.Windows.Forms.Label lbTotal;
     }
 }
