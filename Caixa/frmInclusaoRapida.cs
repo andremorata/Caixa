@@ -40,10 +40,9 @@ namespace Caixa
                         novo.Valor = Convert.ToDouble(txtValor.Value);                    
                     novo.TipoMovimento = DBInstance.DB.TipoMovimento.FirstOrDefault(i => i.Descricao == "Entrada").Id;
                     novo.Observacao = txtObservacao.Text;
-
-                    CaixaDBEntities db = new CaixaDBEntities();
-                    db.Movimentos.AddObject(novo);
-                    db.SaveChanges();
+                                        
+                    DBInstance.DB.Movimentos.AddObject(novo);
+                    DBInstance.DB.SaveChanges();
 
                     MessageBox.Show("Sucesso!", "Movimento incluído com sucesso!", MessageBox.MessageBoxButtons.Ok, MessageBox.MessageBoxIcon.Confirmation);
 

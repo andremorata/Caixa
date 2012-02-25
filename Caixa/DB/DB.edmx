@@ -14,6 +14,7 @@
             FROM [GrupoLogin] AS [GrupoLogin]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="GruposUsuarios" EntityType="CaixaDBModel.Store.GruposUsuarios" store:Type="Tables" />
+          <EntitySet Name="Lembretes" EntityType="CaixaDBModel.Store.Lembretes" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="CaixaDBModel.Store.Login" store:Type="Tables" />
           <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Store.Movimentos" store:Type="Tables" />
           <EntitySet Name="Permissoes" EntityType="CaixaDBModel.Store.Permissoes" store:Type="Tables" />
@@ -64,6 +65,13 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Ativo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lembretes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Texto" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -198,6 +206,7 @@
             <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
             <End Role="Login" EntitySet="Login" />
           </AssociationSet>
+          <EntitySet Name="Lembretes" EntityType="CaixaDBModel.Lembretes" />
         </EntityContainer>
         <EntityType Name="Movimento">
           <Key>
@@ -300,6 +309,13 @@
           <End Type="CaixaDBModel.GruposUsuarios" Role="GruposUsuarios" Multiplicity="*" />
           <End Type="CaixaDBModel.Login" Role="Login" Multiplicity="*" />
         </Association>
+        <EntityType Name="Lembretes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="Texto" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="Id" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -363,6 +379,14 @@
               <ScalarProperty Name="Id" ColumnName="IdGrupo" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Lembretes">
+            <EntityTypeMapping TypeName="CaixaDBModel.Lembretes">
+              <MappingFragment StoreEntitySet="Lembretes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -406,6 +430,7 @@
           <ConnectorPoint PointX="10.75" PointY="2.1151432291666663" />
           <ConnectorPoint PointX="11.5" PointY="2.1151432291666663" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="CaixaDBModel.Lembretes" Width="1.5" PointX="1.75" PointY="4.125" Height="1.4033821614583317" />
       </Diagram>
     </Diagrams>
   </Designer>

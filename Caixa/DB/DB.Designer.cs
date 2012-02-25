@@ -168,6 +168,22 @@ namespace Caixa.DB
             }
         }
         private ObjectSet<Permissoes> _Permissoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Lembretes> Lembretes
+        {
+            get
+            {
+                if ((_Lembretes == null))
+                {
+                    _Lembretes = base.CreateObjectSet<Lembretes>("Lembretes");
+                }
+                return _Lembretes;
+            }
+        }
+        private ObjectSet<Lembretes> _Lembretes;
 
         #endregion
         #region AddTo Methods
@@ -218,6 +234,14 @@ namespace Caixa.DB
         public void AddToPermissoes(Permissoes permissoes)
         {
             base.AddObject("Permissoes", permissoes);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Lembretes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLembretes(Lembretes lembretes)
+        {
+            base.AddObject("Lembretes", lembretes);
         }
 
         #endregion
@@ -486,6 +510,87 @@ namespace Caixa.DB
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="CaixaDBModel", Name="Lembretes")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Lembretes : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Lembretes object.
+        /// </summary>
+        /// <param name="texto">Initial value of the Texto property.</param>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static Lembretes CreateLembretes(global::System.String texto, global::System.Guid id)
+        {
+            Lembretes lembretes = new Lembretes();
+            lembretes.Texto = texto;
+            lembretes.Id = id;
+            return lembretes;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Texto
+        {
+            get
+            {
+                return _Texto;
+            }
+            set
+            {
+                OnTextoChanging(value);
+                ReportPropertyChanging("Texto");
+                _Texto = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Texto");
+                OnTextoChanged();
+            }
+        }
+        private global::System.String _Texto;
+        partial void OnTextoChanging(global::System.String value);
+        partial void OnTextoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

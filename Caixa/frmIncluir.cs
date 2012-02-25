@@ -81,9 +81,8 @@ namespace Caixa
                     novo.TipoMovimento = ((Guid)cboTipo.SelectedValue);
                     novo.Observacao = txtObservacao.Text;
 
-                    CaixaDBEntities db = new CaixaDBEntities();
-                    db.Movimentos.AddObject(novo);
-                    db.SaveChanges();
+                    DBInstance.DB.Movimentos.AddObject(novo);
+                    DBInstance.DB.SaveChanges();
 
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     this.Close();

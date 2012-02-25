@@ -38,6 +38,10 @@
             this.lbRelogio = new System.Windows.Forms.Label();
             this.tmrClock = new System.Windows.Forms.Timer(this.components);
             this.lbSegundos = new System.Windows.Forms.Label();
+            this.pnLembretes = new System.Windows.Forms.Panel();
+            this.lstLembretes = new System.Windows.Forms.ListBox();
+            this.txtAddLembrete = new System.Windows.Forms.TextBox();
+            this.pnLembretes.SuspendLayout();
             this.SuspendLayout();
             // 
             // btAdminCaixa
@@ -67,9 +71,9 @@
             this.lbWelcome.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWelcome.Location = new System.Drawing.Point(28, 96);
             this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(261, 50);
+            this.lbWelcome.Size = new System.Drawing.Size(269, 50);
             this.lbWelcome.TabIndex = 11;
-            this.lbWelcome.Text = "Bem-vindo, {0}";
+            this.lbWelcome.Text = "Bem-vindo, {0}.";
             // 
             // label1
             // 
@@ -135,14 +139,15 @@
             this.btLembretes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLembretes.Image = global::Caixa.Properties.Resources.Paperclip24;
             this.btLembretes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btLembretes.Location = new System.Drawing.Point(1096, 627);
+            this.btLembretes.Location = new System.Drawing.Point(1065, 627);
             this.btLembretes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btLembretes.Name = "btLembretes";
-            this.btLembretes.Size = new System.Drawing.Size(176, 42);
+            this.btLembretes.Size = new System.Drawing.Size(207, 42);
             this.btLembretes.TabIndex = 17;
-            this.btLembretes.Text = "Lembretes";
+            this.btLembretes.Text = "Lembretes (0)";
             this.btLembretes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btLembretes.UseVisualStyleBackColor = true;
+            this.btLembretes.Click += new System.EventHandler(this.btLembretes_Click);
             // 
             // lbRelogio
             // 
@@ -173,10 +178,57 @@
             this.lbSegundos.Text = "00";
             this.lbSegundos.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // pnLembretes
+            // 
+            this.pnLembretes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnLembretes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.pnLembretes.Controls.Add(this.lstLembretes);
+            this.pnLembretes.Controls.Add(this.txtAddLembrete);
+            this.pnLembretes.Location = new System.Drawing.Point(999, 260);
+            this.pnLembretes.Name = "pnLembretes";
+            this.pnLembretes.Size = new System.Drawing.Size(273, 360);
+            this.pnLembretes.TabIndex = 20;
+            this.pnLembretes.Visible = false;
+            // 
+            // lstLembretes
+            // 
+            this.lstLembretes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstLembretes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.lstLembretes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstLembretes.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstLembretes.ForeColor = System.Drawing.Color.White;
+            this.lstLembretes.FormatString = "N2";
+            this.lstLembretes.FormattingEnabled = true;
+            this.lstLembretes.IntegralHeight = false;
+            this.lstLembretes.ItemHeight = 32;
+            this.lstLembretes.Location = new System.Drawing.Point(5, 56);
+            this.lstLembretes.Name = "lstLembretes";
+            this.lstLembretes.Size = new System.Drawing.Size(263, 300);
+            this.lstLembretes.TabIndex = 24;
+            this.lstLembretes.TabStop = false;
+            this.lstLembretes.UseTabStops = false;
+            this.lstLembretes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstLembretes_MouseDoubleClick);
+            // 
+            // txtAddLembrete
+            // 
+            this.txtAddLembrete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtAddLembrete.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddLembrete.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtAddLembrete.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddLembrete.Location = new System.Drawing.Point(5, 6);
+            this.txtAddLembrete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAddLembrete.MaxLength = 200;
+            this.txtAddLembrete.Name = "txtAddLembrete";
+            this.txtAddLembrete.Size = new System.Drawing.Size(262, 43);
+            this.txtAddLembrete.TabIndex = 22;
+            this.txtAddLembrete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddLembrete_KeyDown);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.ClientSize = new System.Drawing.Size(1284, 682);
+            this.Controls.Add(this.pnLembretes);
             this.Controls.Add(this.lbSegundos);
             this.Controls.Add(this.lbRelogio);
             this.Controls.Add(this.btLembretes);
@@ -197,6 +249,9 @@
             this.Controls.SetChildIndex(this.btLembretes, 0);
             this.Controls.SetChildIndex(this.lbRelogio, 0);
             this.Controls.SetChildIndex(this.lbSegundos, 0);
+            this.Controls.SetChildIndex(this.pnLembretes, 0);
+            this.pnLembretes.ResumeLayout(false);
+            this.pnLembretes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +268,8 @@
         private System.Windows.Forms.Label lbRelogio;
         private System.Windows.Forms.Timer tmrClock;
         private System.Windows.Forms.Label lbSegundos;
+        private System.Windows.Forms.Panel pnLembretes;
+        private System.Windows.Forms.TextBox txtAddLembrete;
+        private System.Windows.Forms.ListBox lstLembretes;
     }
 }
