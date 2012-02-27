@@ -101,7 +101,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(14, 10);
+            this.lbTitle.Location = new System.Drawing.Point(11, 5);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(485, 65);
             this.lbTitle.TabIndex = 7;
@@ -109,11 +109,12 @@
             // 
             // lbContent
             // 
-            this.lbContent.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContent.AutoEllipsis = true;
+            this.lbContent.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbContent.ForeColor = System.Drawing.Color.White;
-            this.lbContent.Location = new System.Drawing.Point(14, 75);
+            this.lbContent.Location = new System.Drawing.Point(14, 65);
             this.lbContent.Name = "lbContent";
-            this.lbContent.Size = new System.Drawing.Size(734, 150);
+            this.lbContent.Size = new System.Drawing.Size(734, 172);
             this.lbContent.TabIndex = 8;
             this.lbContent.Text = "Content";
             this.lbContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,7 +122,12 @@
             // btSim
             // 
             this.btSim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btSim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btSim.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.btSim.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btSim.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
             this.btSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSim.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSim.Location = new System.Drawing.Point(112, 245);
             this.btSim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btSim.Name = "btSim";
@@ -135,7 +141,12 @@
             // btNao
             // 
             this.btNao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btNao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btNao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.btNao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btNao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
             this.btNao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNao.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNao.Location = new System.Drawing.Point(248, 245);
             this.btNao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btNao.Name = "btNao";
@@ -149,7 +160,12 @@
             // btCancelar
             // 
             this.btCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.btCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
             this.btCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCancelar.Location = new System.Drawing.Point(520, 245);
             this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btCancelar.Name = "btCancelar";
@@ -163,7 +179,12 @@
             // btOk
             // 
             this.btOk.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btOk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.btOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOk.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btOk.Location = new System.Drawing.Point(384, 245);
             this.btOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btOk.Name = "btOk";
@@ -180,11 +201,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(760, 300);
+            this.Controls.Add(this.lbContent);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.btNao);
             this.Controls.Add(this.btSim);
-            this.Controls.Add(this.lbContent);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.shapeContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

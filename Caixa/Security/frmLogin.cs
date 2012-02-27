@@ -40,8 +40,7 @@ namespace Caixa
                     Sistema.LoggedUser = loggedUser; Sistema.Permissoes = permissoes;
                     MessageBox.Show("Sucesso!", "Bem-vindo, " + txtUsername.Text.Trim() + "! \r\n\r\nClique Ok para continuar.");
                     frmMenu main = new frmMenu();
-                    this.Hide();
-                    txtUsername.Text = ""; txtPassword.Text = "";
+                    this.Hide(); txtUsername.Text = ""; txtPassword.Text = ""; txtUsername.Focus();
                     main.ShowDialog();
                     this.Show();
                 }

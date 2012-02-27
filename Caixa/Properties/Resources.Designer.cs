@@ -60,6 +60,13 @@ namespace Caixa.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Add24 {
+            get {
+                object obj = ResourceManager.GetObject("Add24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Add48 {
             get {
                 object obj = ResourceManager.GetObject("Add48", resourceCulture);
@@ -74,9 +81,23 @@ namespace Caixa.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Delete24 {
+            get {
+                object obj = ResourceManager.GetObject("Delete24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap File_info48 {
             get {
                 object obj = ResourceManager.GetObject("File_info48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Key48 {
+            get {
+                object obj = ResourceManager.GetObject("Key48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

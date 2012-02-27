@@ -110,6 +110,36 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Security\frmViewSelectUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\frmViewSelectUsers.Designer.cs">
+      <DependentUpon>frmViewSelectUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\frmAddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\frmAddNewUser.Designer.cs">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\frmUserPasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\frmUserPasswordChange.Designer.cs">
+      <DependentUpon>frmUserPasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\frmAddEditGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\frmAddEditGroup.Designer.cs">
+      <DependentUpon>frmAddEditGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\frmSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Security\frmSecurity.Designer.cs">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Security\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +191,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\frmViewSelectUsers.resx">
+      <DependentUpon>frmViewSelectUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\frmAddNewUser.resx">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\frmUserPasswordChange.resx">
+      <DependentUpon>frmUserPasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\frmAddEditGroup.resx">
+      <DependentUpon>frmAddEditGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\frmSecurity.resx">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Security\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -215,6 +260,9 @@
     <None Include="Resources\File_info48.png" />
     <None Include="Resources\Lock48.png" />
     <None Include="Resources\Paperclip24.png" />
+    <None Include="Resources\Key48.png" />
+    <None Include="Resources\Add24.png" />
+    <None Include="Resources\Delete24.png" />
     <Content Include="Resources\Tag2.ico" />
     <None Include="Resources\restore_white.png" />
     <None Include="Resources\minimize_white.png" />

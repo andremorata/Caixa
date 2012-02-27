@@ -20,9 +20,11 @@ namespace Caixa
             Caixa.DB.Features feat = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Admin");
             if (feat == null)
                 btAdminCaixa.Enabled = false;
+            Caixa.DB.Features featSeguranca = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Seguranca");
+            if (featSeguranca == null)
+                //btSeguranca.Enabled = false;
 
             lbWelcome.Text = string.Format(lbWelcome.Text, Sistema.LoggedUser.Username);
-
             BindLembretes();
         }
 
@@ -55,7 +57,8 @@ namespace Caixa
 
         private void btSeguranca_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcionalidade ainda não disponível.");
+            frmSecurity frm = new frmSecurity();
+            frm.ShowDialog();
         }
 
         bool ConfirmaSair = false;
