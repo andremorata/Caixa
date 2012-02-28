@@ -240,6 +240,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DB\DB.edmx.sqlce" />
     <None Include="Properties\DataSources\CaixaDBEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

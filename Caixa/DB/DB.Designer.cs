@@ -21,7 +21,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("CaixaDBModel", "Movimento_TipoMovimento", "TipoMovimento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.TipoMovimento), "Movimentos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Movimento), true)]
 [assembly: EdmRelationshipAttribute("CaixaDBModel", "Permissoes_Feature", "Features", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.Features), "Permissoes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Permissoes), true)]
 [assembly: EdmRelationshipAttribute("CaixaDBModel", "Permissao_Grupo", "GruposUsuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Caixa.DB.GruposUsuarios), "Permissoes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Permissoes), true)]
-[assembly: EdmRelationshipAttribute("CaixaDBModel", "GrupoLogin", "GruposUsuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.GruposUsuarios), "Login", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Login))]
+[assembly: EdmRelationshipAttribute("CaixaDBModel", "Login_GruposUsuarios", "Login", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.Login), "GruposUsuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Caixa.DB.GruposUsuarios))]
 
 #endregion
 
@@ -493,18 +493,18 @@ namespace Caixa.DB
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "GrupoLogin", "Login")]
-        public EntityCollection<Login> Login
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Login_GruposUsuarios", "Login")]
+        public EntityCollection<Login> Logins
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Login>("CaixaDBModel.GrupoLogin", "Login");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Login>("CaixaDBModel.Login_GruposUsuarios", "Login");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Login>("CaixaDBModel.GrupoLogin", "Login", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Login>("CaixaDBModel.Login_GruposUsuarios", "Login", value);
                 }
             }
         }
@@ -732,18 +732,18 @@ namespace Caixa.DB
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "GrupoLogin", "GruposUsuarios")]
+        [EdmRelationshipNavigationPropertyAttribute("CaixaDBModel", "Login_GruposUsuarios", "GruposUsuarios")]
         public EntityCollection<GruposUsuarios> GruposUsuarios
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GruposUsuarios>("CaixaDBModel.GrupoLogin", "GruposUsuarios");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GruposUsuarios>("CaixaDBModel.Login_GruposUsuarios", "GruposUsuarios");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GruposUsuarios>("CaixaDBModel.GrupoLogin", "GruposUsuarios", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GruposUsuarios>("CaixaDBModel.Login_GruposUsuarios", "GruposUsuarios", value);
                 }
             }
         }

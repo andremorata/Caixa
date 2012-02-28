@@ -1,0 +1,194 @@
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Movimentos'
+CREATE TABLE [Movimentos] (
+    [Descricao] nvarchar(250)  NOT NULL,
+    [Valor] float  NOT NULL,
+    [Data] datetime  NOT NULL,
+    [Observacao] nvarchar(1000)  NULL,
+    [Id] uniqueidentifier  NOT NULL,
+    [TipoMovimento] uniqueidentifier  NOT NULL
+);
+GO
+
+-- Creating table 'TipoMovimento'
+CREATE TABLE [TipoMovimento] (
+    [Descricao] nvarchar(30)  NOT NULL,
+    [Id] uniqueidentifier  NOT NULL
+);
+GO
+
+-- Creating table 'Features'
+CREATE TABLE [Features] (
+    [Id] uniqueidentifier  NOT NULL,
+    [Descricao] nvarchar(30)  NOT NULL
+);
+GO
+
+-- Creating table 'GruposUsuarios'
+CREATE TABLE [GruposUsuarios] (
+    [Id] uniqueidentifier  NOT NULL,
+    [Nome] nvarchar(20)  NOT NULL,
+    [Ativo] bit  NOT NULL
+);
+GO
+
+-- Creating table 'Login'
+CREATE TABLE [Login] (
+    [Id] uniqueidentifier  NOT NULL,
+    [Username] nvarchar(20)  NOT NULL,
+    [Password] nvarchar(30)  NOT NULL,
+    [Ativo] bit  NOT NULL
+);
+GO
+
+-- Creating table 'Permissoes'
+CREATE TABLE [Permissoes] (
+    [ID] uniqueidentifier  NOT NULL,
+    [Id_Feature] uniqueidentifier  NOT NULL,
+    [Id_Grupo] uniqueidentifier  NOT NULL,
+    [Ativo] bit  NOT NULL
+);
+GO
+
+-- Creating table 'Lembretes'
+CREATE TABLE [Lembretes] (
+    [Texto] nvarchar(100)  NOT NULL,
+    [Id] uniqueidentifier  NOT NULL
+);
+GO
+
+-- Creating table 'Login_GruposUsuarios'
+CREATE TABLE [Login_GruposUsuarios] (
+    [Logins_Id] uniqueidentifier  NOT NULL,
+    [GruposUsuarios_Id] uniqueidentifier  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Movimentos'
+ALTER TABLE [Movimentos]
+ADD CONSTRAINT [PK_Movimentos]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'TipoMovimento'
+ALTER TABLE [TipoMovimento]
+ADD CONSTRAINT [PK_TipoMovimento]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Features'
+ALTER TABLE [Features]
+ADD CONSTRAINT [PK_Features]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'GruposUsuarios'
+ALTER TABLE [GruposUsuarios]
+ADD CONSTRAINT [PK_GruposUsuarios]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Login'
+ALTER TABLE [Login]
+ADD CONSTRAINT [PK_Login]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [ID] in table 'Permissoes'
+ALTER TABLE [Permissoes]
+ADD CONSTRAINT [PK_Permissoes]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [Id] in table 'Lembretes'
+ALTER TABLE [Lembretes]
+ADD CONSTRAINT [PK_Lembretes]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Logins_Id], [GruposUsuarios_Id] in table 'Login_GruposUsuarios'
+ALTER TABLE [Login_GruposUsuarios]
+ADD CONSTRAINT [PK_Login_GruposUsuarios]
+    PRIMARY KEY ([Logins_Id], [GruposUsuarios_Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [TipoMovimento] in table 'Movimentos'
+ALTER TABLE [Movimentos]
+ADD CONSTRAINT [FK_Movimento_TipoMovimento]
+    FOREIGN KEY ([TipoMovimento])
+    REFERENCES [TipoMovimento]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Movimento_TipoMovimento'
+CREATE INDEX [IX_FK_Movimento_TipoMovimento]
+ON [Movimentos]
+    ([TipoMovimento]);
+GO
+
+-- Creating foreign key on [Id_Feature] in table 'Permissoes'
+ALTER TABLE [Permissoes]
+ADD CONSTRAINT [FK_Permissoes_Feature]
+    FOREIGN KEY ([Id_Feature])
+    REFERENCES [Features]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Permissoes_Feature'
+CREATE INDEX [IX_FK_Permissoes_Feature]
+ON [Permissoes]
+    ([Id_Feature]);
+GO
+
+-- Creating foreign key on [Id_Grupo] in table 'Permissoes'
+ALTER TABLE [Permissoes]
+ADD CONSTRAINT [FK_Permissao_Grupo]
+    FOREIGN KEY ([Id_Grupo])
+    REFERENCES [GruposUsuarios]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Permissao_Grupo'
+CREATE INDEX [IX_FK_Permissao_Grupo]
+ON [Permissoes]
+    ([Id_Grupo]);
+GO
+
+-- Creating foreign key on [Logins_Id] in table 'Login_GruposUsuarios'
+ALTER TABLE [Login_GruposUsuarios]
+ADD CONSTRAINT [FK_Login_GruposUsuarios_Login]
+    FOREIGN KEY ([Logins_Id])
+    REFERENCES [Login]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [GruposUsuarios_Id] in table 'Login_GruposUsuarios'
+ALTER TABLE [Login_GruposUsuarios]
+ADD CONSTRAINT [FK_Login_GruposUsuarios_GruposUsuarios]
+    FOREIGN KEY ([GruposUsuarios_Id])
+    REFERENCES [GruposUsuarios]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Login_GruposUsuarios_GruposUsuarios'
+CREATE INDEX [IX_FK_Login_GruposUsuarios_GruposUsuarios]
+ON [Login_GruposUsuarios]
+    ([GruposUsuarios_Id]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

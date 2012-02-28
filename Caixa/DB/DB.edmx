@@ -5,181 +5,165 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CaixaDBModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="CaixaDBModelStoreContainer">
-          <EntitySet Name="Features" EntityType="CaixaDBModel.Store.Features" store:Type="Tables" />
-          <EntitySet Name="GrupoLogin" EntityType="CaixaDBModel.Store.GrupoLogin" store:Type="Tables" store:Name="GrupoLogin">
-            <DefiningQuery>SELECT 
-            [GrupoLogin].[IdLogin] AS [IdLogin], 
-            [GrupoLogin].[IdGrupo] AS [IdGrupo]
-            FROM [GrupoLogin] AS [GrupoLogin]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="GruposUsuarios" EntityType="CaixaDBModel.Store.GruposUsuarios" store:Type="Tables" />
-          <EntitySet Name="Lembretes" EntityType="CaixaDBModel.Store.Lembretes" store:Type="Tables" />
-          <EntitySet Name="Login" EntityType="CaixaDBModel.Store.Login" store:Type="Tables" />
-          <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Store.Movimentos" store:Type="Tables" />
-          <EntitySet Name="Permissoes" EntityType="CaixaDBModel.Store.Permissoes" store:Type="Tables" />
-          <EntitySet Name="TipoMovimento" EntityType="CaixaDBModel.Store.TipoMovimento" store:Type="Tables" />
-          <AssociationSet Name="Grupo_Login" Association="CaixaDBModel.Store.Grupo_Login">
-            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
-            <End Role="GrupoLogin" EntitySet="GrupoLogin" />
-          </AssociationSet>
-          <AssociationSet Name="Login_User" Association="CaixaDBModel.Store.Login_User">
-            <End Role="Login" EntitySet="Login" />
-            <End Role="GrupoLogin" EntitySet="GrupoLogin" />
-          </AssociationSet>
-          <AssociationSet Name="Movimento_TipoMovimento" Association="CaixaDBModel.Store.Movimento_TipoMovimento">
-            <End Role="TipoMovimento" EntitySet="TipoMovimento" />
-            <End Role="Movimentos" EntitySet="Movimentos" />
-          </AssociationSet>
-          <AssociationSet Name="Permissao_Grupo" Association="CaixaDBModel.Store.Permissao_Grupo">
-            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
-            <End Role="Permissoes" EntitySet="Permissoes" />
-          </AssociationSet>
-          <AssociationSet Name="Permissoes_Feature" Association="CaixaDBModel.Store.Permissoes_Feature">
-            <End Role="Features" EntitySet="Features" />
-            <End Role="Permissoes" EntitySet="Permissoes" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Features">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="30" />
-        </EntityType>
-        <!--Errors Found During Generation:
-            warning 6002: The table/view 'GrupoLogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-            -->
-        <EntityType Name="GrupoLogin">
-          <Key>
-            <PropertyRef Name="IdLogin" />
-            <PropertyRef Name="IdGrupo" />
-          </Key>
-          <Property Name="IdLogin" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="IdGrupo" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="GruposUsuarios">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Ativo" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Lembretes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Texto" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
-          <Property Name="Ativo" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Movimentos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="250" />
-          <Property Name="Valor" Type="float" Nullable="false" />
-          <Property Name="Data" Type="datetime" Nullable="false" />
-          <Property Name="Observacao" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="TipoMovimento" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Permissoes">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Id_Feature" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Id_Grupo" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Ativo" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TipoMovimento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="30" />
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <Association Name="Grupo_Login">
-          <End Role="GruposUsuarios" Type="CaixaDBModel.Store.GruposUsuarios" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="GrupoLogin" Type="CaixaDBModel.Store.GrupoLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GruposUsuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GrupoLogin">
-              <PropertyRef Name="IdGrupo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Login_User">
-          <End Role="Login" Type="CaixaDBModel.Store.Login" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="GrupoLogin" Type="CaixaDBModel.Store.GrupoLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Login">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GrupoLogin">
-              <PropertyRef Name="IdLogin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Movimento_TipoMovimento">
-          <End Role="TipoMovimento" Type="CaixaDBModel.Store.TipoMovimento" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Movimentos" Type="CaixaDBModel.Store.Movimentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoMovimento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Movimentos">
-              <PropertyRef Name="TipoMovimento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Permissao_Grupo">
-          <End Role="GruposUsuarios" Type="CaixaDBModel.Store.GruposUsuarios" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Permissoes" Type="CaixaDBModel.Store.Permissoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GruposUsuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Permissoes">
-              <PropertyRef Name="Id_Grupo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Permissoes_Feature">
-          <End Role="Features" Type="CaixaDBModel.Store.Features" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Permissoes" Type="CaixaDBModel.Store.Permissoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Features">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Permissoes">
-              <PropertyRef Name="Id_Feature" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema></edmx:StorageModels>
+  <EntityContainer Name="CaixaDBModelStoreContainer">
+    <EntitySet Name="Movimentos" EntityType="CaixaDBModel.Store.Movimentos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoMovimento" EntityType="CaixaDBModel.Store.TipoMovimento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Features" EntityType="CaixaDBModel.Store.Features" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GruposUsuarios" EntityType="CaixaDBModel.Store.GruposUsuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login" EntityType="CaixaDBModel.Store.Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Permissoes" EntityType="CaixaDBModel.Store.Permissoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lembretes" EntityType="CaixaDBModel.Store.Lembretes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login_GruposUsuarios" EntityType="CaixaDBModel.Store.Login_GruposUsuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Movimento_TipoMovimento" Association="CaixaDBModel.Store.Movimento_TipoMovimento">
+      <End Role="TipoMovimento" EntitySet="TipoMovimento" />
+      <End Role="Movimentos" EntitySet="Movimentos" />
+    </AssociationSet>
+    <AssociationSet Name="Permissoes_Feature" Association="CaixaDBModel.Store.Permissoes_Feature">
+      <End Role="Features" EntitySet="Features" />
+      <End Role="Permissoes" EntitySet="Permissoes" />
+    </AssociationSet>
+    <AssociationSet Name="Permissao_Grupo" Association="CaixaDBModel.Store.Permissao_Grupo">
+      <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
+      <End Role="Permissoes" EntitySet="Permissoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_GruposUsuarios_Login" Association="CaixaDBModel.Store.FK_Login_GruposUsuarios_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Login_GruposUsuarios" EntitySet="Login_GruposUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_GruposUsuarios_GruposUsuarios" Association="CaixaDBModel.Store.FK_Login_GruposUsuarios_GruposUsuarios">
+      <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
+      <End Role="Login_GruposUsuarios" EntitySet="Login_GruposUsuarios" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Movimentos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Valor" Type="float" Nullable="false" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="Observacao" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TipoMovimento" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoMovimento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Features">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="GruposUsuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permissoes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Id_Feature" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Id_Grupo" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lembretes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Texto" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login_GruposUsuarios">
+    <Key>
+      <PropertyRef Name="Logins_Id" />
+      <PropertyRef Name="GruposUsuarios_Id" />
+    </Key>
+    <Property Name="Logins_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GruposUsuarios_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="Movimento_TipoMovimento">
+    <End Role="TipoMovimento" Type="CaixaDBModel.Store.TipoMovimento" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Movimentos" Type="CaixaDBModel.Store.Movimentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMovimento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movimentos">
+        <PropertyRef Name="TipoMovimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Permissoes_Feature">
+    <End Role="Features" Type="CaixaDBModel.Store.Features" Multiplicity="1" />
+    <End Role="Permissoes" Type="CaixaDBModel.Store.Permissoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Features">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissoes">
+        <PropertyRef Name="Id_Feature" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Permissao_Grupo">
+    <End Role="GruposUsuarios" Type="CaixaDBModel.Store.GruposUsuarios" Multiplicity="1" />
+    <End Role="Permissoes" Type="CaixaDBModel.Store.Permissoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GruposUsuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissoes">
+        <PropertyRef Name="Id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_GruposUsuarios_Login">
+    <End Role="Login" Type="CaixaDBModel.Store.Login" Multiplicity="1" />
+    <End Role="Login_GruposUsuarios" Type="CaixaDBModel.Store.Login_GruposUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Login_GruposUsuarios">
+        <PropertyRef Name="Logins_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_GruposUsuarios_GruposUsuarios">
+    <End Role="Login_GruposUsuarios" Type="CaixaDBModel.Store.Login_GruposUsuarios" Multiplicity="*" />
+    <End Role="GruposUsuarios" Type="CaixaDBModel.Store.GruposUsuarios" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GruposUsuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Login_GruposUsuarios">
+        <PropertyRef Name="GruposUsuarios_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CaixaDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -202,11 +186,11 @@
             <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
             <End Role="Permissoes" EntitySet="Permissoes" />
           </AssociationSet>
-          <AssociationSet Name="GrupoLogin" Association="CaixaDBModel.GrupoLogin">
-            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
-            <End Role="Login" EntitySet="Login" />
-          </AssociationSet>
           <EntitySet Name="Lembretes" EntityType="CaixaDBModel.Lembretes" />
+          <AssociationSet Name="Login_GruposUsuarios" Association="CaixaDBModel.Login_GruposUsuarios">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Movimento">
           <Key>
@@ -258,7 +242,7 @@
           <Property Type="String" Name="Nome" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="Ativo" Nullable="false" />
           <NavigationProperty Name="Permissoes" Relationship="CaixaDBModel.Permissao_Grupo" FromRole="GruposUsuarios" ToRole="Permissoes" />
-          <NavigationProperty Name="Login" Relationship="CaixaDBModel.GrupoLogin" FromRole="GruposUsuarios" ToRole="Login" />
+          <NavigationProperty Name="Logins" Relationship="CaixaDBModel.Login_GruposUsuarios" FromRole="GruposUsuarios" ToRole="Login" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -268,7 +252,7 @@
           <Property Type="String" Name="Username" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="Ativo" Nullable="false" />
-          <NavigationProperty Name="GruposUsuarios" Relationship="CaixaDBModel.GrupoLogin" FromRole="Login" ToRole="GruposUsuarios" />
+          <NavigationProperty Name="GruposUsuarios" Relationship="CaixaDBModel.Login_GruposUsuarios" FromRole="Login" ToRole="GruposUsuarios" />
         </EntityType>
         <EntityType Name="Permissoes">
           <Key>
@@ -305,10 +289,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="GrupoLogin">
-          <End Type="CaixaDBModel.GruposUsuarios" Role="GruposUsuarios" Multiplicity="*" />
-          <End Type="CaixaDBModel.Login" Role="Login" Multiplicity="*" />
-        </Association>
         <EntityType Name="Lembretes">
           <Key>
             <PropertyRef Name="Id" />
@@ -316,80 +296,91 @@
           <Property Type="String" Name="Texto" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
         </EntityType>
+        <Association Name="Login_GruposUsuarios">
+          <End Type="CaixaDBModel.Login" Role="Login" Multiplicity="*" />
+          <End Type="CaixaDBModel.GruposUsuarios" Role="GruposUsuarios" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CaixaDBModelStoreContainer" CdmEntityContainer="CaixaDBEntities">
-          <EntitySetMapping Name="Movimentos"><EntityTypeMapping TypeName="CaixaDBModel.Movimento"><MappingFragment StoreEntitySet="Movimentos">
-            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-            <ScalarProperty Name="Valor" ColumnName="Valor" />
-            <ScalarProperty Name="Data" ColumnName="Data" />
-            <ScalarProperty Name="Observacao" ColumnName="Observacao" />
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="TipoMovimento" ColumnName="TipoMovimento" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="TipoMovimento"><EntityTypeMapping TypeName="CaixaDBModel.TipoMovimento"><MappingFragment StoreEntitySet="TipoMovimento">
-            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-            <ScalarProperty Name="Id" ColumnName="Id" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Features">
-            <EntityTypeMapping TypeName="CaixaDBModel.Features">
-              <MappingFragment StoreEntitySet="Features">
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GruposUsuarios">
-            <EntityTypeMapping TypeName="CaixaDBModel.GruposUsuarios">
-              <MappingFragment StoreEntitySet="GruposUsuarios">
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="CaixaDBModel.Login">
-              <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Permissoes">
-            <EntityTypeMapping TypeName="CaixaDBModel.Permissoes">
-              <MappingFragment StoreEntitySet="Permissoes">
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
-                <ScalarProperty Name="Id_Feature" ColumnName="Id_Feature" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="GrupoLogin" TypeName="CaixaDBModel.GrupoLogin" StoreEntitySet="GrupoLogin">
-            <EndProperty Name="Login">
-              <ScalarProperty Name="Id" ColumnName="IdLogin" />
-            </EndProperty>
-            <EndProperty Name="GruposUsuarios">
-              <ScalarProperty Name="Id" ColumnName="IdGrupo" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Lembretes">
-            <EntityTypeMapping TypeName="CaixaDBModel.Lembretes">
-              <MappingFragment StoreEntitySet="Lembretes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Texto" ColumnName="Texto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CaixaDBModelStoreContainer" CdmEntityContainer="CaixaDBEntities">
+    <EntitySetMapping Name="Movimentos">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.Movimento)">
+        <MappingFragment StoreEntitySet="Movimentos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+          <ScalarProperty Name="TipoMovimento" ColumnName="TipoMovimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMovimento">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.TipoMovimento)">
+        <MappingFragment StoreEntitySet="TipoMovimento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Features">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.Features)">
+        <MappingFragment StoreEntitySet="Features">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GruposUsuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.GruposUsuarios)">
+        <MappingFragment StoreEntitySet="GruposUsuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.Login)">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissoes">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.Permissoes)">
+        <MappingFragment StoreEntitySet="Permissoes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id_Feature" ColumnName="Id_Feature" />
+          <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lembretes">
+      <EntityTypeMapping TypeName="IsTypeOf(CaixaDBModel.Lembretes)">
+        <MappingFragment StoreEntitySet="Lembretes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Login_GruposUsuarios" TypeName="CaixaDBModel.Login_GruposUsuarios" StoreEntitySet="Login_GruposUsuarios">
+      <EndProperty Name="Login">
+        <ScalarProperty Name="Id" ColumnName="Logins_Id" />
+      </EndProperty>
+      <EndProperty Name="GruposUsuarios">
+        <ScalarProperty Name="Id" ColumnName="GruposUsuarios_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
@@ -426,11 +417,11 @@
           <ConnectorPoint PointX="9.5" PointY="3.1052864583333326" />
           <ConnectorPoint PointX="9.5" PointY="3.875" />
         </AssociationConnector>
-        <AssociationConnector Association="CaixaDBModel.GrupoLogin" >
-          <ConnectorPoint PointX="10.75" PointY="2.1151432291666663" />
-          <ConnectorPoint PointX="11.5" PointY="2.1151432291666663" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="CaixaDBModel.Lembretes" Width="1.5" PointX="1.75" PointY="4.125" Height="1.4033821614583317" />
+        <AssociationConnector Association="CaixaDBModel.Login_GruposUsuarios">
+          <ConnectorPoint PointX="11.5" PointY="2.1151432291666667" />
+          <ConnectorPoint PointX="10.75" PointY="2.1151432291666667" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

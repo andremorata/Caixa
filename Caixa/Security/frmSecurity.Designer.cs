@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbAdmLogin = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btVerTodosUsuarios = new System.Windows.Forms.LinkLabel();
@@ -43,7 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gdUsuarios = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gdUserCol_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +53,6 @@
             this.btAddUser = new Caixa.Controls.CaixaButton(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.gdGrupos = new System.Windows.Forms.DataGridView();
-            this.groupCol_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupCol_Grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupCol_Ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.groupCol_Permissoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupCol_Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btRemoveGroup = new Caixa.Controls.CaixaButton(this.components);
             this.btAddGroup = new Caixa.Controls.CaixaButton(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -63,11 +60,31 @@
             this.btAdmLogin = new Caixa.Controls.CaixaButton(this.components);
             this.gbPermissoes = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupCol_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupCol_Grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupCol_Ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupCol_Permissoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupCol_Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.caixaButton1 = new Caixa.Controls.CaixaButton(this.components);
+            this.caixaButton2 = new Caixa.Controls.CaixaButton(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbAdmLogin.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdGrupos)).BeginInit();
             this.gbPermissoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // gbAdmLogin
@@ -117,10 +134,10 @@
             this.btVerTodosUsuarios.LinkColor = System.Drawing.Color.DodgerBlue;
             this.btVerTodosUsuarios.Location = new System.Drawing.Point(27, 104);
             this.btVerTodosUsuarios.Name = "btVerTodosUsuarios";
-            this.btVerTodosUsuarios.Size = new System.Drawing.Size(126, 36);
+            this.btVerTodosUsuarios.Size = new System.Drawing.Size(181, 36);
             this.btVerTodosUsuarios.TabIndex = 28;
             this.btVerTodosUsuarios.TabStop = true;
-            this.btVerTodosUsuarios.Text = "Ver todos";
+            this.btVerTodosUsuarios.Text = "Buscar usuário";
             this.btVerTodosUsuarios.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btVerTodosUsuarios_LinkClicked);
             // 
             // label7
@@ -225,7 +242,7 @@
             this.gdUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
+            this.gdUserCol_Usuario,
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
@@ -252,13 +269,13 @@
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // dataGridViewTextBoxColumn2
+            // gdUserCol_Usuario
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Username";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Usuário";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 250;
+            this.gdUserCol_Usuario.DataPropertyName = "Username";
+            this.gdUserCol_Usuario.HeaderText = "Usuário";
+            this.gdUserCol_Usuario.Name = "gdUserCol_Usuario";
+            this.gdUserCol_Usuario.ReadOnly = true;
+            this.gdUserCol_Usuario.Width = 250;
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -381,48 +398,6 @@
             this.gdGrupos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdGrupos_CellDoubleClick);
             this.gdGrupos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdGrupos_RowEnter);
             // 
-            // groupCol_Id
-            // 
-            this.groupCol_Id.DataPropertyName = "Id";
-            this.groupCol_Id.HeaderText = "Id";
-            this.groupCol_Id.Name = "groupCol_Id";
-            this.groupCol_Id.ReadOnly = true;
-            this.groupCol_Id.Visible = false;
-            // 
-            // groupCol_Grupo
-            // 
-            this.groupCol_Grupo.DataPropertyName = "Nome";
-            this.groupCol_Grupo.HeaderText = "Grupo";
-            this.groupCol_Grupo.Name = "groupCol_Grupo";
-            this.groupCol_Grupo.ReadOnly = true;
-            this.groupCol_Grupo.Width = 250;
-            // 
-            // groupCol_Ativo
-            // 
-            this.groupCol_Ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.groupCol_Ativo.DataPropertyName = "Ativo";
-            this.groupCol_Ativo.FalseValue = "";
-            this.groupCol_Ativo.HeaderText = "Ativo";
-            this.groupCol_Ativo.Name = "groupCol_Ativo";
-            this.groupCol_Ativo.ReadOnly = true;
-            this.groupCol_Ativo.Width = 79;
-            // 
-            // groupCol_Permissoes
-            // 
-            this.groupCol_Permissoes.DataPropertyName = "Permissoes";
-            this.groupCol_Permissoes.HeaderText = "Permissoes";
-            this.groupCol_Permissoes.Name = "groupCol_Permissoes";
-            this.groupCol_Permissoes.ReadOnly = true;
-            this.groupCol_Permissoes.Visible = false;
-            // 
-            // groupCol_Login
-            // 
-            this.groupCol_Login.DataPropertyName = "Login";
-            this.groupCol_Login.HeaderText = "Login";
-            this.groupCol_Login.Name = "groupCol_Login";
-            this.groupCol_Login.ReadOnly = true;
-            this.groupCol_Login.Visible = false;
-            // 
             // btRemoveGroup
             // 
             this.btRemoveGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -518,6 +493,12 @@
             this.gbPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPermissoes.Controls.Add(this.label9);
+            this.gbPermissoes.Controls.Add(this.dataGridView2);
+            this.gbPermissoes.Controls.Add(this.label8);
+            this.gbPermissoes.Controls.Add(this.caixaButton1);
+            this.gbPermissoes.Controls.Add(this.caixaButton2);
+            this.gbPermissoes.Controls.Add(this.dataGridView1);
             this.gbPermissoes.Controls.Add(this.label2);
             this.gbPermissoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbPermissoes.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -537,22 +518,263 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Permissões";
             // 
+            // groupCol_Id
+            // 
+            this.groupCol_Id.DataPropertyName = "Id";
+            this.groupCol_Id.HeaderText = "Id";
+            this.groupCol_Id.Name = "groupCol_Id";
+            this.groupCol_Id.ReadOnly = true;
+            this.groupCol_Id.Visible = false;
+            // 
+            // groupCol_Grupo
+            // 
+            this.groupCol_Grupo.DataPropertyName = "Nome";
+            this.groupCol_Grupo.HeaderText = "Grupo";
+            this.groupCol_Grupo.Name = "groupCol_Grupo";
+            this.groupCol_Grupo.ReadOnly = true;
+            this.groupCol_Grupo.Width = 250;
+            // 
+            // groupCol_Ativo
+            // 
+            this.groupCol_Ativo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.groupCol_Ativo.DataPropertyName = "Ativo";
+            this.groupCol_Ativo.FalseValue = "";
+            this.groupCol_Ativo.HeaderText = "Ativo";
+            this.groupCol_Ativo.Name = "groupCol_Ativo";
+            this.groupCol_Ativo.ReadOnly = true;
+            this.groupCol_Ativo.Width = 79;
+            // 
+            // groupCol_Permissoes
+            // 
+            this.groupCol_Permissoes.DataPropertyName = "Permissoes";
+            this.groupCol_Permissoes.HeaderText = "Permissoes";
+            this.groupCol_Permissoes.Name = "groupCol_Permissoes";
+            this.groupCol_Permissoes.ReadOnly = true;
+            this.groupCol_Permissoes.Visible = false;
+            // 
+            // groupCol_Login
+            // 
+            this.groupCol_Login.DataPropertyName = "Logins";
+            this.groupCol_Login.HeaderText = "Logins";
+            this.groupCol_Login.Name = "groupCol_Login";
+            this.groupCol_Login.ReadOnly = true;
+            this.groupCol_Login.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(162, 66);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(380, 324);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Nome";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Grupo";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 250;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Ativo";
+            this.dataGridViewCheckBoxColumn2.FalseValue = "";
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Ativo";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn2.Width = 79;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Permissoes";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Permissoes";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Logins";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Logins";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label8.AutoSize = true;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(157, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 25);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Grupos";
+            // 
+            // caixaButton1
+            // 
+            this.caixaButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.caixaButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.caixaButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.caixaButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.caixaButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.caixaButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.caixaButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.caixaButton1.Image = global::Caixa.Properties.Resources.Delete24;
+            this.caixaButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.caixaButton1.Location = new System.Drawing.Point(910, 28);
+            this.caixaButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.caixaButton1.Name = "caixaButton1";
+            this.caixaButton1.Size = new System.Drawing.Size(40, 35);
+            this.caixaButton1.TabIndex = 22;
+            this.caixaButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.caixaButton1.UseVisualStyleBackColor = true;
+            // 
+            // caixaButton2
+            // 
+            this.caixaButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.caixaButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.caixaButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.caixaButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.caixaButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(99)))));
+            this.caixaButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.caixaButton2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.caixaButton2.Image = global::Caixa.Properties.Resources.Add24;
+            this.caixaButton2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.caixaButton2.Location = new System.Drawing.Point(863, 28);
+            this.caixaButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.caixaButton2.Name = "caixaButton2";
+            this.caixaButton2.Size = new System.Drawing.Size(40, 35);
+            this.caixaButton2.TabIndex = 21;
+            this.caixaButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.caixaButton2.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label9.AutoSize = true;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(565, 38);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(189, 25);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Permissões do grupo";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9});
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.Location = new System.Drawing.Point(570, 66);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView2.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(380, 324);
+            this.dataGridView2.TabIndex = 24;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Descricao";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Função";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 250;
+            // 
             // frmSecurity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.ClientSize = new System.Drawing.Size(1284, 662);
+            this.Controls.Add(this.gbPermissoes);
+            this.Controls.Add(this.gbAdmLogin);
             this.Controls.Add(this.btPermissoes);
             this.Controls.Add(this.btAdmLogin);
-            this.Controls.Add(this.gbAdmLogin);
-            this.Controls.Add(this.gbPermissoes);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmSecurity";
             this.Text = "Segurança";
             this.Title = "Central de Segurança";
-            this.Controls.SetChildIndex(this.gbPermissoes, 0);
-            this.Controls.SetChildIndex(this.gbAdmLogin, 0);
             this.Controls.SetChildIndex(this.btAdmLogin, 0);
             this.Controls.SetChildIndex(this.btPermissoes, 0);
+            this.Controls.SetChildIndex(this.gbAdmLogin, 0);
+            this.Controls.SetChildIndex(this.gbPermissoes, 0);
             this.gbAdmLogin.ResumeLayout(false);
             this.gbAdmLogin.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -561,6 +783,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdGrupos)).EndInit();
             this.gbPermissoes.ResumeLayout(false);
             this.gbPermissoes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,11 +802,6 @@
         private Controls.CaixaButton btRemoveGroup;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView gdGrupos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Grupo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn groupCol_Ativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Permissoes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Login;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView gdUsuarios;
         private Controls.CaixaButton btRemoveUser;
@@ -594,11 +813,29 @@
         private System.Windows.Forms.LinkLabel btNovoUsuario;
         private System.Windows.Forms.LinkLabel btAlterarSenha;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel btVerTodosUsuarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gdUserCol_Usuario;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.LinkLabel btVerTodosUsuarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Grupo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn groupCol_Ativo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Permissoes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupCol_Login;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Label label8;
+        private Controls.CaixaButton caixaButton1;
+        private Controls.CaixaButton caixaButton2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

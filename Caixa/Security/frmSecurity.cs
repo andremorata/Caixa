@@ -108,7 +108,7 @@ namespace Caixa
             if (gdGrupos.SelectedRows.Count > 0)
             {
                 GruposUsuarios selected = (GruposUsuarios)gdGrupos.SelectedRows[0].DataBoundItem;
-                gdUsuarios.DataSource = selected.Login.OrderBy(i => i.Username).ToList<Login>();
+                gdUsuarios.DataSource = selected.Logins.OrderBy(i => i.Username).ToList<Login>();
             }
         }
 
@@ -151,14 +151,21 @@ namespace Caixa
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 GruposUsuarios gp = frm.SelectedUser.GruposUsuarios.FirstOrDefault();
-                if (gp != null)                
+                if (gp != null)
                     foreach (DataGridViewRow item in gdGrupos.Rows)
+                    {
                         if (((GruposUsuarios)item.DataBoundItem).Id == gp.Id)
                         {
-                            item.Selected = true; LoadUsers();
+                            item.Selected = true; 
+                            gdGrupos.CurrentCell = item.Cells["groupCol_Grupo"]; LoadUsers();
                             foreach (DataGridViewRow user in gdUsuarios.Rows)
-                                if (((Login)user.DataBoundItem).Id == frm.SelectedUser.Id)user.Selected = true;                                    
+                                if (((Login)user.DataBoundItem).Id == frm.SelectedUser.Id)
+                                {
+                                    user.Selected = true; 
+                                    gdUsuarios.CurrentCell = user.Cells["gdUserCol_Usuario"];
+                                }
                         }
+                    }
                 else
                 {
                     MessageBox.Show("Erro!", "O usuário selecionado ainda não foi adicionado a nenhum grupo e por isso não pode ser exibido!", 
@@ -172,16 +179,17 @@ namespace Caixa
             Security.frmViewSelectUsers frm = new Security.frmViewSelectUsers();
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Guid gpID = ((GruposUsuarios)gdGrupos.SelectedRows[0].DataBoundItem).Id;
-                GruposUsuarios existGp = frm.SelectedUser.GruposUsuarios.FirstOrDefault(i => i.Id == gpID);
+                GruposUsuarios gp = ((GruposUsuarios)gdGrupos.SelectedRows[0].DataBoundItem);
+                GruposUsuarios existGp = frm.SelectedUser.GruposUsuarios.FirstOrDefault(i => i.Id == gp.Id);
                 Login user = frm.SelectedUser;
                 if (existGp == null)
                 {
-                    DBInstance.DB.GruposUsuarios.FirstOrDefault(i=>i.Id == gpID).Login.Add(
-                        DBInstance.DB.Login.FirstOrDefault(i => i.Id == user.Id));
-                    //DBInstance.DB.GruposUsuarios.ApplyCurrentValues(gp);
-                    //DBInstance.DB.Login.ApplyCurrentValues(user);
-                    //DBInstance.DB.AcceptAllChanges();
+                    gp.Logins.Add(user);
+                    DBInstance.DB.GruposUsuarios.ApplyCurrentValues(gp);   
+                    
+                    //A linha abaixo precisa forçar a mudança de estado do objeto para que a estrutura seja salva.
+                    //Caso o estado do objeto seja Unchanged, os dados não serão salvos.
+                    DBInstance.DB.ObjectStateManager.ChangeObjectState(gp, EntityState.Modified);                                 
                     DBInstance.DB.SaveChanges();
                     LoadUsers();
                 }
@@ -202,8 +210,9 @@ namespace Caixa
                     "Esta ação fará com que este usuário perca todas as permissões associadas ao grupo.",
                      MessageBox.MessageBoxButtons.YesNo, MessageBox.MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    grupo.Login.Remove(user);
-                    DBInstance.DB.AcceptAllChanges();
+                    grupo.Logins.Remove(user);
+                    DBInstance.DB.GruposUsuarios.ApplyCurrentValues(grupo);
+                    DBInstance.DB.ObjectStateManager.ChangeObjectState(grupo, EntityState.Modified);
                     DBInstance.DB.SaveChanges();
                     LoadUsers();
                 }
