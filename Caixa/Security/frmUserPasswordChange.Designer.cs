@@ -189,6 +189,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmUserPasswordChange";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Grupo";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.form_KeyDown);
             this.ResumeLayout(false);

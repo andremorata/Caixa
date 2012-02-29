@@ -20,13 +20,12 @@ namespace Caixa
 
             ActivateTab(ActiveTab.AdmLogin);
 
-            LoadGrupos();
+            gdGrupos.DataSource = LoadGrupos();
         }
 
-        private void LoadGrupos()
+        private List<GruposUsuarios> LoadGrupos()
         {
-            List<GruposUsuarios> grupos = DBInstance.DB.GruposUsuarios.OrderBy(i => i.Nome).ToList<GruposUsuarios>();
-            gdGrupos.DataSource = grupos;
+            return DBInstance.DB.GruposUsuarios.OrderBy(i => i.Nome).ToList<GruposUsuarios>();
         }
 
         private enum ActiveTab { AdmLogin, Permissoes }
@@ -39,13 +38,15 @@ namespace Caixa
                     btAdmLogin.BackColor = Color.FromArgb(99, 99, 99);
                     btPermissoes.BackColor = Color.FromArgb(44, 44, 44);
                     gbPermissoes.Visible = false;
-                    gbAdmLogin.Visible = true;
+                    gbAdmLogin.Visible = true;                    
                     break;
                 case ActiveTab.Permissoes:
+                    gdGroupPermissoes.DataSource = LoadGrupos();
+                    Application.DoEvents();
                     btPermissoes.BackColor = Color.FromArgb(99, 99, 99);
                     btAdmLogin.BackColor = Color.FromArgb(44, 44, 44);
                     gbPermissoes.Visible = true;
-                    gbAdmLogin.Visible = false;
+                    gbAdmLogin.Visible = false;                    
                     break;
                 default:
                     break;
@@ -69,7 +70,7 @@ namespace Caixa
                 GruposUsuarios selected = (GruposUsuarios)gdGrupos.SelectedRows[0].DataBoundItem;
                 Security.frmAddEditGroup frm = new Security.frmAddEditGroup(selected);
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    LoadGrupos();
+                    gdGrupos.DataSource = LoadGrupos();
                 frm.Dispose();
             }
         }
@@ -78,7 +79,7 @@ namespace Caixa
         {
             Security.frmAddEditGroup frm = new Security.frmAddEditGroup(null);
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                LoadGrupos();
+                gdGrupos.DataSource = LoadGrupos();
             frm.Dispose();
         }
 
@@ -91,7 +92,7 @@ namespace Caixa
                 DBInstance.DB.GruposUsuarios.DeleteObject(selected);
                 DBInstance.DB.SaveChanges();
 
-                LoadGrupos();
+                gdGrupos.DataSource = LoadGrupos();
             }
         }
 
@@ -215,6 +216,81 @@ namespace Caixa
                     DBInstance.DB.ObjectStateManager.ChangeObjectState(grupo, EntityState.Modified);
                     DBInstance.DB.SaveChanges();
                     LoadUsers();
+                }
+            }
+        }
+
+        private void gdGroupPermissoes_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && gdGrupos.SelectedRows.Count > 0)
+            {
+                LoadGroupFeatures();
+            }
+        }
+
+        private void LoadGroupFeatures()
+        {
+            if (gdGroupPermissoes.SelectedRows.Count > 0)
+            {
+                GruposUsuarios grupo = (GruposUsuarios)gdGroupPermissoes.SelectedRows[0].DataBoundItem;
+                List<Features> features = (from i in DBInstance.DB.Permissoes
+                                           where i.Id_Grupo == grupo.Id
+                                           select i.Features).ToList<Features>();
+
+                gdGroupFeatures.DataSource = features;
+            }            
+        }
+
+        private void btSelectFeature_Click(object sender, EventArgs e)
+        {
+            Security.frmViewSelectFeatures frm = new Security.frmViewSelectFeatures();
+             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+             {
+                 Guid idGrupo = ((GruposUsuarios)gdGroupPermissoes.SelectedRows[0].DataBoundItem).Id;
+                 bool featExist = ((from i in DBInstance.DB.Permissoes
+                                            where i.Id_Grupo == idGrupo
+                                            && i.Id_Feature == frm.SelectedFeature.Id
+                                            select i.Features).FirstOrDefault()) != null;
+                 if (!featExist)
+                 {
+                     Permissoes novo = new Permissoes();
+                     novo.Ativo = true;
+                     novo.ID = Guid.NewGuid();
+                     novo.Id_Feature = frm.SelectedFeature.Id;
+                     novo.Id_Grupo = ((GruposUsuarios)gdGroupPermissoes.SelectedRows[0].DataBoundItem).Id;
+
+                     DBInstance.DB.Permissoes.AddObject(novo);
+                     DBInstance.DB.SaveChanges();
+
+                     LoadGroupFeatures();
+                 }
+                 else
+                 {
+                     MessageBox.Show("Atenção!", "Funcionalidade já adicinada ao grupo.", MessageBox.MessageBoxButtons.YesNo, MessageBox.MessageBoxIcon.Warning);
+                 }
+             }
+        }
+
+        private void btRemoveFeature_Click(object sender, EventArgs e)
+        {
+            if (gdGrupos.SelectedRows.Count > 0 && gdUsuarios.Rows.Count > 0)
+            {                
+                GruposUsuarios grupo = (GruposUsuarios)gdGroupPermissoes.SelectedRows[0].DataBoundItem;
+                Features feature = (Features)gdGroupFeatures.SelectedRows[0].DataBoundItem;
+
+                if (MessageBox.Show("Atenção!", "Você tem certeza que deseja remover a função selecionada do grupo? \r\n\r\n" +
+                    "Esta ação fará com que todos os usuários ligados a este grupo percam o acesso à funcionalidade.",
+                     MessageBox.MessageBoxButtons.YesNo, MessageBox.MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    Permissoes selected = (from i in DBInstance.DB.Permissoes
+                                           where i.Id_Feature == feature.Id && i.Id_Grupo == grupo.Id
+                                           select i).FirstOrDefault();
+                    if (selected != null)
+                    {
+                        DBInstance.DB.Permissoes.DeleteObject(selected);
+                        DBInstance.DB.SaveChanges();
+                        LoadGroupFeatures();
+                    }
                 }
             }
         }

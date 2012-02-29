@@ -17,15 +17,20 @@ namespace Caixa
         {
             InitializeComponent();
 
-            Caixa.DB.Features feat = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Admin");
-            if (feat == null)
-                btAdminCaixa.Enabled = false;
-            Caixa.DB.Features featSeguranca = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Seguranca");
-            if (featSeguranca == null)
-                //btSeguranca.Enabled = false;
+            AtribuirPermissoes();
 
             lbWelcome.Text = string.Format(lbWelcome.Text, Sistema.LoggedUser.Username);
             BindLembretes();
+        }
+
+        private void AtribuirPermissoes()
+        {
+            Caixa.DB.Features feat = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Admin");
+            if (feat == null) btAdminCaixa.Enabled = false;
+            Caixa.DB.Features featSeguranca = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Seguranca");
+            if (featSeguranca == null) btSeguranca.Enabled = false;
+            Caixa.DB.Features featInclusaoRapida = Sistema.Permissoes.Find(i => i.Descricao == "Caixa_Inclusao.Rapida");
+            if (featInclusaoRapida == null) btInclusaoRapida.Enabled = false;
         }
 
         private void BindLembretes()
