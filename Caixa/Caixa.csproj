@@ -263,7 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\CaixaDB.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\User48.png" />
     <None Include="Resources\Add48.png" />
